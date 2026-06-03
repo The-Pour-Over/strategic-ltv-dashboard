@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Pour Over — LTV Dashboard</title>
+  <style>
+    :root {
+      --salmon: #E87C74;
+      --salmon-light: #fdf2f1;
+      --green-light: #edf7ed;
+      --border: #e5e7eb;
+      --text: #1f2937;
+      --subtle: #6b7280;
+      --bg: #f9fafb;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); font-size: 14px; }
+
+    header {
+      background: var(--salmon);
+      color: white;
+      padding: 18px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    header h1 { font-size: 1.1rem; font-weight: 700; letter-spacing: -0.01em; }
+    header p { font-size: 0.8rem; opacity: 0.85; margin-top: 2px; }
+    .updated { font-size: 0.75rem; opacity: 0.8; }
+
+    .container { max-width: 1400px; margin: 0 auto; padding: 24px 32px; }
+
+    /* Assumptions */
+    .card { background: white; border-radius: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); margin-bottom: 20px; overflow: hidden; }
+    .card-header { padding: 14px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+    .card-header h2 { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--subtle); }
+    .card-body { padding: 16px 20px; }
+
+    .assumptions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 12px;
+    }
+    .assumption-item label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--subtle);
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .assumption-item input {
+      width: 100%;
+      padding: 7px 10px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.875rem;
+      color: var(--text);
+      transition: border-color 0.15s;
+    }
+    .assumption-item input:focus { outline: none; border-color: var(--salmon); box-shadow: 0 0 0 3px rgba(232,124,116,0.12); }
+
+    /* Tabs */
+    .tabs { display: flex; gap: 6px; margin-bottom: 16px; flex-wrap: wrap; }
+    .tab {
+      padding: 7px 15px;
+      border-radius: 20px;
+      border: 1.5px solid var(--border);
+      background: white;
+      cursor: pointer;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--subtle);
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+    .tab.active { background: var(--salmon); color: white; border-color: var(--salmon); }
+    .tab:hover:not(.active) { border-color: var(--salmon); color: var(--salmon); }
+
+    /* Detail table */
+    .section-header {
+      background: var(--green-light);
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-header h3 { font-size: 0.95rem; font-weight: 700; }
+    .badge {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2px 10px;
+      font-size: 0.72rem;
+      color: var(--subtle);
+      font-weight: 500;
+    }
+
+    table { width: 100%; border-collapse: collapse; }
+    thead tr { background: #f9fafb; }
+    th {
+      padding: 9px 14px;
+      text-align: right;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--subtle);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    th:first-child { text-align: left; }
+    td { padding: 10px 14px; font-size: 0.84rem; text-align: right; border-bottom: 1px solid #f3f4f6; }
+    td:first-child { text-align: left; font-weight: 500; }
+    tr:last-child td { border-bottom: none; }
+    tr.row-overall { background: #fafafa; }
+    tr.row-overall td { font-weight: 600; }
+    tr:hover td { background: var(--salmon-light); }
+    tr.row-overall:hover td { background: #f0f0f0; }
+
+    .zero { color: #d1d5db; }
+    .ltv-cell { color: #059669; font-weight: 700; font-size: 0.9rem; }
+
+    /* Summary table */
+    .summary-wrap { overflow-x: auto; }
+    .summary-table th:not(:first-child) { min-width: 110px; }
+    .summary-channel { font-weight: 600; white-space: nowrap; }
+
+    /* Color scale for LTV */
+    .ltv-hi { background: #d1fae5 !important; color: #065f46 !important; }
+    .ltv-mid { background: #fef3c7 !important; color: #92400e !important; }
+    .ltv-lo { background: #fee2e2 !important; color: #991b1b !important; }
+
+    .footer { text-align: center; padding: 24px; font-size: 0.75rem; color: var(--subtle); }
+  </style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>The Pour Over — LTV Dashboard</h1>
+    <p>Incremental LTV by acquisition channel &amp; cohort window</p>
+  </div>
+  <span class="updated">Data pulled June 3, 2026</span>
+</header>
+
+<div class="container">
+
+  <!-- Assumptions -->
+  <div class="card">
+    <div class="card-header"><h2>Assumptions</h2></div>
+    <div class="card-body">
+      <div class="assumptions-grid">
+        <div class="assumption-item">
+          <label>Open Weight</label>
+          <input type="number" id="openWeight" value="0.10" step="0.01" min="0" max="1" onchange="render()">
+        </div>
+        <div class="assumption-item">
+          <label>Click Weight</label>
+          <input type="number" id="clickWeight" value="0.90" step="0.01" min="0" max="1" onchange="render()">
+        </div>
+        <div class="assumption-item">
+          <label>Overall CPM ($)</label>
+          <input type="number" id="CPM" value="45.00" step="0.01" min="0" onchange="render()">
+        </div>
+        <div class="assumption-item">
+          <label>Overall CPC ($)</label>
+          <input type="number" id="CPC" value="0.85" step="0.01" min="0" onchange="render()">
+        </div>
+        <div class="assumption-item">
+          <label>Sends Per Year</label>
+          <input type="number" id="sendsPerYear" value="150" step="1" min="0" onchange="render()">
+        </div>
+        <div class="assumption-item">
+          <label>Annual Discount Rate</label>
+          <input type="number" id="discountRate" value="0.10" step="0.01" min="0" onchange="render()">
+        </div>
+        <div class="assumption-item">
+          <label>LTV of Choose to Pay ($)</label>
+          <input type="number" id="premiumLTV" value="100.00" step="1" min="0" onchange="render()">
+        </div>
+        <div class="assumption-item">
+          <label>LTV of a Referral ($)</label>
+          <input type="number" id="referralLTV" value="5.00" step="0.01" min="0" onchange="render()">
+        </div>
+        <div class="assumption-item">
+          <label>LT Monthly Churn Rate</label>
+          <input type="number" id="ltChurnRate" value="0.025" step="0.001" min="0" onchange="render()">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detail view -->
+  <div class="tabs" id="tabs"></div>
+  <div class="card" id="detailCard" style="margin-bottom:20px;">
+    <div id="detailContent"></div>
+  </div>
+
+  <!-- Total LTV by Channel -->
+  <div class="card" style="margin-bottom:20px;">
+    <div class="card-header"><h2>Total LTV by Channel — Month by Month</h2></div>
+    <div class="card-body summary-wrap">
+      <table class="summary-table" id="totalLtvTable"></table>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">The Pour Over · LTV Dashboard · Data from beehiiv</div>
+
+<script>
+const timeWindows = [
+  { name: "T+25 to T+35", month: 1, channels: [
+    { channel: "Meta",       subs: 24149,    openRate: 0.4929, CTR: 0.0674, unsubRate: 0.259, premiumRate: 0.000, referralRate: 0.003, refsPerReferrer: 1.61 },
+    { channel: "Referrals",  subs: 1605,     openRate: 0.5722, CTR: 0.1655, unsubRate: 0.091, premiumRate: 0.001, referralRate: 0.008, refsPerReferrer: 2.38 },
+    { channel: "Newsletter", subs: 2222,     openRate: 0.6944, CTR: 0.1036, unsubRate: 0.233, premiumRate: 0.001, referralRate: 0.005, refsPerReferrer: 1.83 },
+    { channel: "Google",     subs: 0,        openRate: 0,      CTR: 0,      unsubRate: 0,     premiumRate: 0,     referralRate: 0,     refsPerReferrer: 0 },
+    { channel: "Overall",    subs: 2935374,  openRate: 0.5172, CTR: 0.0528, unsubRate: 0.495, premiumRate: 0.003, referralRate: 0.031, refsPerReferrer: 2.70, isOverall: true },
+  ]},
+  { name: "T+55 to T+65", month: 2, channels: [
+    { channel: "Meta",       subs: 13054,    openRate: 0.4694, CTR: 0.0551, unsubRate: 0.310, premiumRate: 0.000, referralRate: 0.003, refsPerReferrer: 1.84 },
+    { channel: "Referrals",  subs: 1093,     openRate: 0.5837, CTR: 0.1385, unsubRate: 0.109, premiumRate: 0.000, referralRate: 0.019, refsPerReferrer: 1.76 },
+    { channel: "Newsletter", subs: 704,      openRate: 0.6663, CTR: 0.1120, unsubRate: 0.352, premiumRate: 0.004, referralRate: 0.004, refsPerReferrer: 3.00 },
+    { channel: "Google",     subs: 0,        openRate: 0,      CTR: 0,      unsubRate: 0,     premiumRate: 0,     referralRate: 0,     refsPerReferrer: 0 },
+    { channel: "Overall",    subs: 2863408,  openRate: 0.5174, CTR: 0.0527, unsubRate: 0.500, premiumRate: 0.003, referralRate: 0.031, refsPerReferrer: 2.70, isOverall: true },
+  ]},
+  { name: "T+85 to T+95", month: 3, channels: [
+    { channel: "Meta",       subs: 33120,    openRate: 0.4046, CTR: 0.0485, unsubRate: 0.319, premiumRate: 0.000, referralRate: 0.003, refsPerReferrer: 1.68 },
+    { channel: "Referrals",  subs: 2070,     openRate: 0.5992, CTR: 0.1226, unsubRate: 0.119, premiumRate: 0.000, referralRate: 0.032, refsPerReferrer: 1.85 },
+    { channel: "Newsletter", subs: 1664,     openRate: 0.6353, CTR: 0.0837, unsubRate: 0.247, premiumRate: 0.002, referralRate: 0.014, refsPerReferrer: 2.08 },
+    { channel: "Google",     subs: 0,        openRate: 0,      CTR: 0,      unsubRate: 0,     premiumRate: 0,     referralRate: 0,     refsPerReferrer: 0 },
+    { channel: "Overall",    subs: 2762242,  openRate: 0.5181, CTR: 0.0526, unsubRate: 0.507, premiumRate: 0.003, referralRate: 0.032, refsPerReferrer: 2.71, isOverall: true },
+  ]},
+  { name: "T+115 to T+125", month: 4, channels: [
+    { channel: "Meta",       subs: 23193,    openRate: 0.4575, CTR: 0.0552, unsubRate: 0.412, premiumRate: 0.000, referralRate: 0.006, refsPerReferrer: 1.76 },
+    { channel: "Referrals",  subs: 2525,     openRate: 0.5882, CTR: 0.1154, unsubRate: 0.160, premiumRate: 0.001, referralRate: 0.025, refsPerReferrer: 1.65 },
+    { channel: "Newsletter", subs: 972,      openRate: 0.5446, CTR: 0.0806, unsubRate: 0.354, premiumRate: 0.000, referralRate: 0.010, refsPerReferrer: 1.90 },
+    { channel: "Google",     subs: 0,        openRate: 0,      CTR: 0,      unsubRate: 0,     premiumRate: 0,     referralRate: 0,     refsPerReferrer: 0 },
+    { channel: "Overall",    subs: 2643037,  openRate: 0.5190, CTR: 0.0524, unsubRate: 0.513, premiumRate: 0.003, referralRate: 0.033, refsPerReferrer: 2.72, isOverall: true },
+  ]},
+  { name: "T+145 to T+155", month: 5, channels: [
+    { channel: "Meta",       subs: 49382,    openRate: 0.4250, CTR: 0.0497, unsubRate: 0.462, premiumRate: 0.000, referralRate: 0.007, refsPerReferrer: 1.72 },
+    { channel: "Referrals",  subs: 2237,     openRate: 0.5600, CTR: 0.0986, unsubRate: 0.182, premiumRate: 0.003, referralRate: 0.025, refsPerReferrer: 2.21 },
+    { channel: "Newsletter", subs: 1029,     openRate: 0.5763, CTR: 0.0840, unsubRate: 0.366, premiumRate: 0.001, referralRate: 0.014, refsPerReferrer: 1.29 },
+    { channel: "Google",     subs: 0,        openRate: 0,      CTR: 0,      unsubRate: 0,     premiumRate: 0,     referralRate: 0,     refsPerReferrer: 0 },
+    { channel: "Overall",    subs: 2486360,  openRate: 0.5204, CTR: 0.0523, unsubRate: 0.519, premiumRate: 0.003, referralRate: 0.035, refsPerReferrer: 2.74, isOverall: true },
+  ]},
+  { name: "T+175 to T+185", month: 6, channels: [
+    { channel: "Meta",       subs: 14432,    openRate: 0.3056, CTR: 0.0406, unsubRate: 0.525, premiumRate: 0.000, referralRate: 0.003, refsPerReferrer: 1.45 },
+    { channel: "Referrals",  subs: 725,      openRate: 0.5899, CTR: 0.1107, unsubRate: 0.232, premiumRate: 0.001, referralRate: 0.026, refsPerReferrer: 1.79 },
+    { channel: "Newsletter", subs: 987,      openRate: 0.6162, CTR: 0.1132, unsubRate: 0.383, premiumRate: 0.000, referralRate: 0.018, refsPerReferrer: 1.39 },
+    { channel: "Google",     subs: 0,        openRate: 0,      CTR: 0,      unsubRate: 0,     premiumRate: 0,     referralRate: 0,     refsPerReferrer: 0 },
+    { channel: "Overall",    subs: 2392636,  openRate: 0.5223, CTR: 0.0522, unsubRate: 0.521, premiumRate: 0.003, referralRate: 0.036, refsPerReferrer: 2.75, isOverall: true },
+  ]},
+  { name: "T+205 to T+215", month: 7, channels: [
+    { channel: "Meta",       subs: 8534,     openRate: 0.4474, CTR: 0.0381, unsubRate: 0.464, premiumRate: 0.001, referralRate: 0.006, refsPerReferrer: 1.37 },
+    { channel: "Referrals",  subs: 1841,     openRate: 0.5909, CTR: 0.0984, unsubRate: 0.194, premiumRate: 0.002, referralRate: 0.030, refsPerReferrer: 1.82 },
+    { channel: "Newsletter", subs: 1049,     openRate: 0.6275, CTR: 0.1117, unsubRate: 0.340, premiumRate: 0.007, referralRate: 0.030, refsPerReferrer: 1.84 },
+    { channel: "Google",     subs: 0,        openRate: 0,      CTR: 0,      unsubRate: 0,     premiumRate: 0,     referralRate: 0,     refsPerReferrer: 0 },
+    { channel: "Overall",    subs: 2346025,  openRate: 0.5227, CTR: 0.0521, unsubRate: 0.522, premiumRate: 0.003, referralRate: 0.036, refsPerReferrer: 2.76, isOverall: true },
+  ]},
+  { name: "T+235 and on", month: 8, channels: [
+    { channel: "Meta",       subs: 1182138,  openRate: 0.4469, CTR: 0.0350, unsubRate: 0.531, premiumRate: 0.001, referralRate: 0.013, refsPerReferrer: 1.88 },
+    { channel: "Referrals",  subs: 89381,    openRate: 0.6247, CTR: 0.0857, unsubRate: 0.408, premiumRate: 0.006, referralRate: 0.057, refsPerReferrer: 2.43 },
+    { channel: "Newsletter", subs: 70154,    openRate: 0.6384, CTR: 0.0910, unsubRate: 0.462, premiumRate: 0.005, referralRate: 0.031, refsPerReferrer: 1.84 },
+    { channel: "Google",     subs: 15320,    openRate: 0.3643, CTR: 0.0480, unsubRate: 0.574, premiumRate: 0.001, referralRate: 0.006, refsPerReferrer: 2.94 },
+    { channel: "Overall",    subs: 2273424,  openRate: 0.5230, CTR: 0.0521, unsubRate: 0.524, premiumRate: 0.004, referralRate: 0.037, refsPerReferrer: 2.76, isOverall: true },
+  ]},
+];
+
+let activeWindow = 0;
+
+function getAssumptions() {
+  return {
+    openWeight:   parseFloat(document.getElementById('openWeight').value)   || 0,
+    clickWeight:  parseFloat(document.getElementById('clickWeight').value)  || 0,
+    CPM:          parseFloat(document.getElementById('CPM').value)          || 0,
+    CPC:          parseFloat(document.getElementById('CPC').value)          || 0,
+    sendsPerYear: parseFloat(document.getElementById('sendsPerYear').value) || 0,
+    discountRate: parseFloat(document.getElementById('discountRate').value) || 0,
+    premiumLTV:   parseFloat(document.getElementById('premiumLTV').value)   || 0,
+    referralLTV:  parseFloat(document.getElementById('referralLTV').value)  || 0,
+    ltChurnRate:  parseFloat(document.getElementById('ltChurnRate').value)  || 0,
+  };
+}
+
+// First window: standard cumulative formula
+function calcLTV_first(row, month, a) {
+  if (row.subs === 0) return null;
+  const spm = a.sendsPerYear / 12;
+  const openRev  = a.openWeight  * (a.CPM / 1000) * row.openRate * month * spm;
+  const clickRev = a.clickWeight * a.CPC * row.openRate * row.CTR * month * spm;
+  const refVal   = a.referralLTV * row.referralRate * row.refsPerReferrer;
+  const premVal  = a.premiumLTV  * row.premiumRate;
+  const gross    = openRev + clickRev + refVal + premVal;
+  const net      = gross * (1 - row.unsubRate);
+  return net / Math.pow(1 + a.discountRate, month / 12);
+}
+
+// Subsequent windows: incremental formula (delta vs prior window)
+function calcLTV_incremental(curr, mCurr, prev, mPrev, a) {
+  if (curr.subs === 0) return null;
+  const spm = a.sendsPerYear / 12;
+  const churnDelta = curr.unsubRate - prev.unsubRate;
+  const openRev  = a.openWeight * (a.CPM / 1000) * (curr.openRate * mCurr * spm - prev.openRate * mPrev * spm);
+  const clickRev = a.clickWeight * a.CPC * (curr.openRate * curr.CTR * mCurr * spm - prev.openRate * prev.CTR * mPrev * spm) * (1 - churnDelta);
+  const refVal   = a.referralLTV * ((curr.referralRate * curr.refsPerReferrer) - (prev.referralRate * prev.refsPerReferrer)) * (1 - churnDelta);
+  const premVal  = a.premiumLTV  * (curr.premiumRate - prev.premiumRate) * (1 - churnDelta);
+  return (openRev + clickRev + refVal + premVal) / Math.pow(1 + a.discountRate, mCurr / 12);
+}
+
+// Terminal window (T+235): perpetuity formula
+function calcLTV_terminal(row, month, a) {
+  if (row.subs === 0) return null;
+  const spm = a.sendsPerYear / 12;
+  const openRev  = a.openWeight  * (a.CPM / 1000) * row.openRate * spm;
+  const clickRev = a.clickWeight * a.CPC * row.openRate * row.CTR * spm;
+  const refVal   = a.referralLTV * row.referralRate * row.refsPerReferrer / month;
+  const premVal  = a.premiumLTV  * row.premiumRate / month;
+  const gross    = openRev + clickRev + refVal + premVal;
+  return gross * (1 - a.ltChurnRate) / a.discountRate;
+}
+
+function calcLTV(row, month, a, prevRow, prevMonth, isTerminal) {
+  if (isTerminal) return calcLTV_terminal(row, month, a);
+  if (prevRow) return calcLTV_incremental(row, month, prevRow, prevMonth, a);
+  return calcLTV_first(row, month, a);
+}
+
+function ltvClass(v) {
+  if (v === null) return '';
+  if (v >= 5.00) return 'ltv-hi';
+  if (v >= 2.00) return 'ltv-mid';
+  return 'ltv-lo';
+}
+
+function pct(v) { return v === 0 ? '<span class="zero">—</span>' : (v * 100).toFixed(1) + '%'; }
+function num(v) { return v === 0 ? '<span class="zero">—</span>' : v.toLocaleString(); }
+function dec(v) { return v === 0 ? '<span class="zero">—</span>' : v.toFixed(2); }
+function money(v) { return v === null ? '<span class="zero">—</span>' : '$' + v.toFixed(2); }
+
+function renderTabs() {
+  document.getElementById('tabs').innerHTML = timeWindows.map((w, i) =>
+    `<div class="tab ${i === activeWindow ? 'active' : ''}" onclick="setWindow(${i})">${w.name}</div>`
+  ).join('');
+}
+
+function setWindow(i) { activeWindow = i; renderDetail(); renderTabs(); }
+
+function renderDetail() {
+  const a = getAssumptions();
+  const w = timeWindows[activeWindow];
+  const prevW = activeWindow > 0 ? timeWindows[activeWindow - 1] : null;
+  const rows = w.channels.map(row => {
+    const prevRow = prevW ? prevW.channels.find(r => r.channel === row.channel) : null;
+    const isTerminal = activeWindow === timeWindows.length - 1;
+    const ltv = calcLTV(row, w.month, a, prevRow, prevW ? prevW.month : null, isTerminal);
+    const empty = row.subs === 0;
+    return `
+      <tr class="${row.isOverall ? 'row-overall' : ''}">
+        <td>${row.channel}</td>
+        <td>${num(row.subs)}</td>
+        <td>${empty ? '<span class="zero">—</span>' : (row.openRate*100).toFixed(2)+'%'}</td>
+        <td>${empty ? '<span class="zero">—</span>' : (row.CTR*100).toFixed(2)+'%'}</td>
+        <td>${empty ? '<span class="zero">—</span>' : (row.unsubRate*100).toFixed(1)+'%'}</td>
+        <td>${empty ? '<span class="zero">—</span>' : (row.premiumRate*100).toFixed(1)+'%'}</td>
+        <td>${empty ? '<span class="zero">—</span>' : (row.referralRate*100).toFixed(1)+'%'}</td>
+        <td>${empty ? '<span class="zero">—</span>' : row.refsPerReferrer.toFixed(2)}</td>
+        <td class="${ltvClass(ltv)}">${money(ltv)}</td>
+      </tr>`;
+  }).join('');
+
+  document.getElementById('detailContent').innerHTML = `
+    <div class="section-header">
+      <h3>${w.name}</h3>
+      <span class="badge">Month ${w.month}</span>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Channel</th>
+          <th># Subs</th>
+          <th>Open Rate</th>
+          <th>CTR</th>
+          <th>Unsub Rate</th>
+          <th>Premium %</th>
+          <th>Referral Rate</th>
+          <th>Refs / Referrer</th>
+          <th>${activeWindow === timeWindows.length - 1 ? 'Terminal LTV' : 'Incremental LTV'}</th>
+        </tr>
+      </thead>
+      <tbody>${rows}</tbody>
+    </table>`;
+}
+
+function renderSummary() {
+  const a = getAssumptions();
+  const channels = ['Meta', 'Referrals', 'Newsletter', 'Google', 'Overall'];
+
+  const headerRow = `<tr>
+    <th style="text-align:left">Channel</th>
+    ${timeWindows.map(w => `<th>${w.name}</th>`).join('')}
+    <th style="border-left:2px solid #d1d5db">Total LTV</th>
+  </tr>`;
+
+  const bodyRows = channels.map(ch => {
+    let total = 0;
+    let hasAny = false;
+    const cells = timeWindows.map((w, wi) => {
+      const row = w.channels.find(r => r.channel === ch);
+      const prevW = wi > 0 ? timeWindows[wi - 1] : null;
+      const prevRow = prevW ? prevW.channels.find(r => r.channel === ch) : null;
+      const isTerminal = wi === timeWindows.length - 1;
+      const ltv = row ? calcLTV(row, w.month, a, prevRow, prevW ? prevW.month : null, isTerminal) : null;
+      if (ltv !== null) { total += ltv; hasAny = true; }
+      return `<td class="${ltvClass(ltv)}" style="font-weight:600">${money(ltv)}</td>`;
+    }).join('');
+    const totalDisplay = hasAny ? '$' + total.toFixed(2) : '<span class="zero">—</span>';
+    const totalClass = hasAny ? ltvClass(total / timeWindows.length) : '';
+    return `<tr><td class="summary-channel">${ch}</td>${cells}<td class="${totalClass}" style="font-weight:700;border-left:2px solid #d1d5db;font-size:0.95rem">${totalDisplay}</td></tr>`;
+  }).join('');
+
+  document.getElementById('summaryTable').innerHTML = `
+    <thead>${headerRow}</thead>
+    <tbody>${bodyRows}</tbody>`;
+}
+
+// Historical monthly snapshots from spreadsheet
+const historicalMonths = [
+  { label: 'Sep 5, 2025',  note: 'Data range: all T+ windows as of 9/5/2025',   meta: 3.62,  referrals: 12.69, newsletter: 9.43,  google: null,  organic: null, overall: 6.52 },
+  { label: 'Sep 30, 2025', note: 'Data range: all T+ windows as of 9/30/2025',  meta: 3.78,  referrals: 14.84, newsletter: 11.88, google: null,  organic: null, overall: 7.50 },
+  { label: 'Oct 31, 2025', note: 'Data range: all T+ windows as of 10/31/2025', meta: 6.45,  referrals: 12.42, newsletter: 11.70, google: null,  organic: null, overall: 7.32 },
+  { label: 'Dec 31, 2025', note: 'Data range: all T+ windows as of 12/31/2025', meta: 3.36,  referrals: 11.90, newsletter: 10.32, google: 5.21,  organic: null, overall: 7.09 },
+  { label: 'Jan 31, 2026', note: 'Data range: all T+ windows as of 1/31/2026',  meta: 3.88,  referrals: 12.30, newsletter: 12.09, google: 16.25, organic: null, overall: 7.03 },
+  { label: 'Feb 28, 2026', note: 'Data range: all T+ windows as of 2/28/2026',  meta: 3.54,  referrals: 11.78, newsletter: 10.16, google: 18.42, organic: null, overall: 6.99 },
+  { label: 'Mar 31, 2026', note: 'Data range: all T+ windows as of 3/31/2026',  meta: 3.52,  referrals: 12.89, newsletter: 13.89, google: null,  organic: null, overall: 6.87 },
+  { label: 'Apr 30, 2026', note: 'Data range: all T+ windows as of 4/30/2026',  meta: 3.49,  referrals: 11.79, newsletter: 12.18, google: null,  organic: null, overall: null },
+  { label: 'Live (Jun 3, 2026)', note: 'Live beehiiv data pulled Jun 3, 2026 — recalculates with assumptions above', live: true },
+];
+
+function calcLiveTotals(a) {
+  const channels = ['Meta', 'Referrals', 'Newsletter', 'Google', 'Overall'];
+  const result = {};
+  channels.forEach(ch => {
+    const total = timeWindows.reduce((sum, w, wi) => {
+      const row = w.channels.find(r => r.channel === ch);
+      const prevW = wi > 0 ? timeWindows[wi - 1] : null;
+      const prevRow = prevW ? prevW.channels.find(r => r.channel === ch) : null;
+      const isTerminal = wi === timeWindows.length - 1;
+      const ltv = row ? calcLTV(row, w.month, a, prevRow, prevW ? prevW.month : null, isTerminal) : null;
+      return ltv !== null ? sum + ltv : sum;
+    }, 0);
+    result[ch] = total > 0 ? total : null;
+  });
+  return result;
+}
+
+function fmt(v) {
+  if (v === null || v === undefined) return '<span class="zero">—</span>';
+  return `<span class="${ltvClass(v)}" style="font-weight:600">$${v.toFixed(2)}</span>`;
+}
+
+function renderTotalLTV() {
+  const a = getAssumptions();
+  const channels = ['Meta', 'Referrals', 'Newsletter', 'Google', 'Organic', 'Overall'];
+
+  const header = `<tr>
+    <th style="text-align:left">Date</th>
+    ${channels.map(c => `<th>${c}</th>`).join('')}
+  </tr>`;
+
+  const rows = historicalMonths.map(m => {
+    const data = m.live ? calcLiveTotals(a) : {
+      Meta: m.meta, Referrals: m.referrals, Newsletter: m.newsletter,
+      Google: m.google, Organic: m.organic, Overall: m.overall
+    };
+    const style = m.live ? 'font-weight:600;border-top:2px solid var(--border);' : '';
+    return `<tr style="${style}">
+      <td style="white-space:nowrap;font-weight:${m.live ? '700' : '500'}">${m.label}</td>
+      ${channels.map(c => `<td>${fmt(data[c])}</td>`).join('')}
+    </tr>`;
+  }).join('');
+
+  document.getElementById('totalLtvTable').innerHTML = `<thead>${header}</thead><tbody>${rows}</tbody>`;
+}
+
+function render() { renderTabs(); renderDetail(); renderTotalLTV(); }
+render();
+</script>
+</body>
+</html>
