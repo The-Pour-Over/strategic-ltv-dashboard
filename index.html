@@ -144,7 +144,7 @@
     <h1>The Pour Over — LTV Dashboard</h1>
     <p>Incremental LTV by acquisition channel &amp; cohort window</p>
   </div>
-  <span class="updated">Data pulled July 1, 2026</span>
+  <span class="updated">Data pulled July 7, 2026</span>
 </header>
 
 <div class="container">
@@ -215,60 +215,60 @@
 <script>
 const timeWindows = [
   { name: "T+25 to T+35", month: 1, channels: [
-    { channel: "Meta", subs: 0, openRate: 0, CTR: 0, unsubRate: 0, premiumRate: 0, referralRate: 0, refsPerReferrer: 0 },
-    { channel: "Referrals", subs: 0, openRate: 0, CTR: 0, unsubRate: 0, premiumRate: 0, referralRate: 0, refsPerReferrer: 0 },
-    { channel: "Newsletter", subs: 0, openRate: 0, CTR: 0, unsubRate: 0, premiumRate: 0, referralRate: 0, refsPerReferrer: 0 },
+    { channel: "Meta", subs: 19066, openRate: 0.5303, CTR: 0.0921, unsubRate: 0.248, premiumRate: 0.0, referralRate: 0.004, refsPerReferrer: 1.79 },
+    { channel: "Referrals", subs: 2130, openRate: 0.5573, CTR: 0.1912, unsubRate: 0.123, premiumRate: 0.0, referralRate: 0.007, refsPerReferrer: 2.07 },
+    { channel: "Newsletter", subs: 91, openRate: 0.5194, CTR: 0.129, unsubRate: 0.231, premiumRate: 0.011, referralRate: 0.033, refsPerReferrer: 2.0 },
     { channel: "Google", subs: 0, openRate: 0, CTR: 0, unsubRate: 0, premiumRate: 0, referralRate: 0, refsPerReferrer: 0 },
-    { channel: "Overall", subs: 0, openRate: 0, CTR: 0, unsubRate: 0, premiumRate: 0, referralRate: 0, refsPerReferrer: 0, isOverall: true },
+    { channel: "Overall", subs: 3010951, openRate: 0.5171, CTR: 0.0525, unsubRate: 0.54, premiumRate: 0.003, referralRate: 0.03, refsPerReferrer: 2.7, isOverall: true },
   ]},
   { name: "T+55 to T+65", month: 2, channels: [
-    { channel: "Meta", subs: 0, openRate: 0, CTR: 0, unsubRate: 0, premiumRate: 0, referralRate: 0, refsPerReferrer: 0 },
-    { channel: "Referrals", subs: 0, openRate: 0, CTR: 0, unsubRate: 0, premiumRate: 0, referralRate: 0, refsPerReferrer: 0 },
-    { channel: "Newsletter", subs: 0, openRate: 0, CTR: 0, unsubRate: 0, premiumRate: 0, referralRate: 0, refsPerReferrer: 0 },
+    { channel: "Meta", subs: 19526, openRate: 0.4699, CTR: 0.0526, unsubRate: 0.305, premiumRate: 0.0, referralRate: 0.003, refsPerReferrer: 1.67 },
+    { channel: "Referrals", subs: 1606, openRate: 0.5337, CTR: 0.1276, unsubRate: 0.143, premiumRate: 0.0, referralRate: 0.014, refsPerReferrer: 2.05 },
+    { channel: "Newsletter", subs: 2281, openRate: 0.6713, CTR: 0.0859, unsubRate: 0.298, premiumRate: 0.001, referralRate: 0.007, refsPerReferrer: 2.06 },
     { channel: "Google", subs: 0, openRate: 0, CTR: 0, unsubRate: 0, premiumRate: 0, referralRate: 0, refsPerReferrer: 0 },
-    { channel: "Overall", subs: 0, openRate: 0, CTR: 0, unsubRate: 0, premiumRate: 0, referralRate: 0, refsPerReferrer: 0, isOverall: true },
+    { channel: "Overall", subs: 2948899, openRate: 0.517, CTR: 0.0524, unsubRate: 0.545, premiumRate: 0.003, referralRate: 0.031, refsPerReferrer: 2.71, isOverall: true },
   ]},
   { name: "T+85 to T+95", month: 3, channels: [
-    { channel: "Meta", subs: 0, openRate: 0, CTR: 0, unsubRate: 0, premiumRate: 0, referralRate: 0, refsPerReferrer: 0 },
-    { channel: "Referrals", subs: 0, openRate: 0, CTR: 0, unsubRate: 0, premiumRate: 0, referralRate: 0, refsPerReferrer: 0 },
-    { channel: "Newsletter", subs: 0, openRate: 0, CTR: 0, unsubRate: 0, premiumRate: 0, referralRate: 0, refsPerReferrer: 0 },
+    { channel: "Meta", subs: 18405, openRate: 0.4868, CTR: 0.0483, unsubRate: 0.402, premiumRate: 0.0, referralRate: 0.004, refsPerReferrer: 1.67 },
+    { channel: "Referrals", subs: 1353, openRate: 0.5717, CTR: 0.1194, unsubRate: 0.186, premiumRate: 0.001, referralRate: 0.024, refsPerReferrer: 2.12 },
+    { channel: "Newsletter", subs: 1065, openRate: 0.6328, CTR: 0.0853, unsubRate: 0.399, premiumRate: 0.003, referralRate: 0.004, refsPerReferrer: 2.5 },
     { channel: "Google", subs: 0, openRate: 0, CTR: 0, unsubRate: 0, premiumRate: 0, referralRate: 0, refsPerReferrer: 0 },
-    { channel: "Overall", subs: 0, openRate: 0, CTR: 0, unsubRate: 0, premiumRate: 0, referralRate: 0, refsPerReferrer: 0, isOverall: true },
+    { channel: "Overall", subs: 26269, openRate: 0.5121, CTR: 0.0668, unsubRate: 0.374, premiumRate: 0.001, referralRate: 0.008, refsPerReferrer: 1.87, isOverall: true },
   ]},
   { name: "T+115 to T+125", month: 4, channels: [
-    { channel: "Meta", subs: 0, openRate: 0, CTR: 0, unsubRate: 0, premiumRate: 0, referralRate: 0, refsPerReferrer: 0 },
-    { channel: "Referrals", subs: 0, openRate: 0, CTR: 0, unsubRate: 0, premiumRate: 0, referralRate: 0, refsPerReferrer: 0 },
-    { channel: "Newsletter", subs: 0, openRate: 0, CTR: 0, unsubRate: 0, premiumRate: 0, referralRate: 0, refsPerReferrer: 0 },
+    { channel: "Meta", subs: 23729, openRate: 0.4061, CTR: 0.0429, unsubRate: 0.468, premiumRate: 0.0, referralRate: 0.003, refsPerReferrer: 1.58 },
+    { channel: "Referrals", subs: 1852, openRate: 0.5989, CTR: 0.1072, unsubRate: 0.183, premiumRate: 0.0, referralRate: 0.026, refsPerReferrer: 1.78 },
+    { channel: "Newsletter", subs: 809, openRate: 0.6424, CTR: 0.0858, unsubRate: 0.352, premiumRate: 0.0, referralRate: 0.011, refsPerReferrer: 1.78 },
     { channel: "Google", subs: 0, openRate: 0, CTR: 0, unsubRate: 0, premiumRate: 0, referralRate: 0, refsPerReferrer: 0 },
-    { channel: "Overall", subs: 0, openRate: 0, CTR: 0, unsubRate: 0, premiumRate: 0, referralRate: 0, refsPerReferrer: 0, isOverall: true },
+    { channel: "Overall", subs: 34243, openRate: 0.4412, CTR: 0.0621, unsubRate: 0.443, premiumRate: 0.0, referralRate: 0.008, refsPerReferrer: 1.86, isOverall: true },
   ]},
   { name: "T+145 to T+155", month: 5, channels: [
-    { channel: "Meta", subs: 0, openRate: 0, CTR: 0, unsubRate: 0, premiumRate: 0, referralRate: 0, refsPerReferrer: 0 },
-    { channel: "Referrals", subs: 0, openRate: 0, CTR: 0, unsubRate: 0, premiumRate: 0, referralRate: 0, refsPerReferrer: 0 },
-    { channel: "Newsletter", subs: 0, openRate: 0, CTR: 0, unsubRate: 0, premiumRate: 0, referralRate: 0, refsPerReferrer: 0 },
+    { channel: "Meta", subs: 17833, openRate: 0.4292, CTR: 0.047, unsubRate: 0.509, premiumRate: 0.0, referralRate: 0.004, refsPerReferrer: 1.68 },
+    { channel: "Referrals", subs: 1380, openRate: 0.5858, CTR: 0.1127, unsubRate: 0.225, premiumRate: 0.001, referralRate: 0.027, refsPerReferrer: 1.54 },
+    { channel: "Newsletter", subs: 2069, openRate: 0.6425, CTR: 0.099, unsubRate: 0.354, premiumRate: 0.001, referralRate: 0.019, refsPerReferrer: 2.44 },
     { channel: "Google", subs: 0, openRate: 0, CTR: 0, unsubRate: 0, premiumRate: 0, referralRate: 0, refsPerReferrer: 0 },
-    { channel: "Overall", subs: 0, openRate: 0, CTR: 0, unsubRate: 0, premiumRate: 0, referralRate: 0, refsPerReferrer: 0, isOverall: true },
+    { channel: "Overall", subs: 26145, openRate: 0.4756, CTR: 0.0667, unsubRate: 0.464, premiumRate: 0.001, referralRate: 0.008, refsPerReferrer: 1.8, isOverall: true },
   ]},
   { name: "T+175 to T+185", month: 6, channels: [
-    { channel: "Meta", subs: 0, openRate: 0, CTR: 0, unsubRate: 0, premiumRate: 0, referralRate: 0, refsPerReferrer: 0 },
-    { channel: "Referrals", subs: 0, openRate: 0, CTR: 0, unsubRate: 0, premiumRate: 0, referralRate: 0, refsPerReferrer: 0 },
-    { channel: "Newsletter", subs: 0, openRate: 0, CTR: 0, unsubRate: 0, premiumRate: 0, referralRate: 0, refsPerReferrer: 0 },
+    { channel: "Meta", subs: 46085, openRate: 0.4431, CTR: 0.0463, unsubRate: 0.516, premiumRate: 0.0, referralRate: 0.007, refsPerReferrer: 1.67 },
+    { channel: "Referrals", subs: 2967, openRate: 0.5432, CTR: 0.0971, unsubRate: 0.261, premiumRate: 0.002, referralRate: 0.025, refsPerReferrer: 1.86 },
+    { channel: "Newsletter", subs: 1940, openRate: 0.6173, CTR: 0.085, unsubRate: 0.403, premiumRate: 0.001, referralRate: 0.017, refsPerReferrer: 1.55 },
     { channel: "Google", subs: 0, openRate: 0, CTR: 0, unsubRate: 0, premiumRate: 0, referralRate: 0, refsPerReferrer: 0 },
-    { channel: "Overall", subs: 0, openRate: 0, CTR: 0, unsubRate: 0, premiumRate: 0, referralRate: 0, refsPerReferrer: 0, isOverall: true },
+    { channel: "Overall", subs: 57649, openRate: 0.464, CTR: 0.0572, unsubRate: 0.488, premiumRate: 0.002, referralRate: 0.01, refsPerReferrer: 1.72, isOverall: true },
   ]},
   { name: "T+205 to T+215", month: 7, channels: [
-    { channel: "Meta", subs: 0, openRate: 0, CTR: 0, unsubRate: 0, premiumRate: 0, referralRate: 0, refsPerReferrer: 0 },
-    { channel: "Referrals", subs: 0, openRate: 0, CTR: 0, unsubRate: 0, premiumRate: 0, referralRate: 0, refsPerReferrer: 0 },
-    { channel: "Newsletter", subs: 0, openRate: 0, CTR: 0, unsubRate: 0, premiumRate: 0, referralRate: 0, refsPerReferrer: 0 },
+    { channel: "Meta", subs: 15927, openRate: 0.3202, CTR: 0.0408, unsubRate: 0.597, premiumRate: 0.001, referralRate: 0.003, refsPerReferrer: 1.4 },
+    { channel: "Referrals", subs: 756, openRate: 0.5506, CTR: 0.1055, unsubRate: 0.32, premiumRate: 0.001, referralRate: 0.019, refsPerReferrer: 2.0 },
+    { channel: "Newsletter", subs: 578, openRate: 0.6073, CTR: 0.1257, unsubRate: 0.379, premiumRate: 0.0, referralRate: 0.029, refsPerReferrer: 1.71 },
     { channel: "Google", subs: 0, openRate: 0, CTR: 0, unsubRate: 0, premiumRate: 0, referralRate: 0, refsPerReferrer: 0 },
-    { channel: "Overall", subs: 0, openRate: 0, CTR: 0, unsubRate: 0, premiumRate: 0, referralRate: 0, refsPerReferrer: 0, isOverall: true },
+    { channel: "Overall", subs: 19748, openRate: 0.3607, CTR: 0.055, unsubRate: 0.563, premiumRate: 0.001, referralRate: 0.006, refsPerReferrer: 1.66, isOverall: true },
   ]},
   { name: "T+235 and on", month: 8, channels: [
-    { channel: "Meta", subs: 0, openRate: 0, CTR: 0, unsubRate: 0, premiumRate: 0, referralRate: 0, refsPerReferrer: 0 },
-    { channel: "Referrals", subs: 0, openRate: 0, CTR: 0, unsubRate: 0, premiumRate: 0, referralRate: 0, refsPerReferrer: 0 },
-    { channel: "Newsletter", subs: 0, openRate: 0, CTR: 0, unsubRate: 0, premiumRate: 0, referralRate: 0, refsPerReferrer: 0 },
-    { channel: "Google", subs: 0, openRate: 0, CTR: 0, unsubRate: 0, premiumRate: 0, referralRate: 0, refsPerReferrer: 0 },
-    { channel: "Overall", subs: 0, openRate: 0, CTR: 0, unsubRate: 0, premiumRate: 0, referralRate: 0, refsPerReferrer: 0, isOverall: true },
+    { channel: "Meta", subs: 1248111, openRate: 0.4488, CTR: 0.0347, unsubRate: 0.587, premiumRate: 0.001, referralRate: 0.013, refsPerReferrer: 1.89 },
+    { channel: "Referrals", subs: 95092, openRate: 0.6201, CTR: 0.0856, unsubRate: 0.439, premiumRate: 0.006, referralRate: 0.057, refsPerReferrer: 2.42 },
+    { channel: "Newsletter", subs: 77946, openRate: 0.6367, CTR: 0.0907, unsubRate: 0.485, premiumRate: 0.005, referralRate: 0.031, refsPerReferrer: 1.87 },
+    { channel: "Google", subs: 15320, openRate: 0.3649, CTR: 0.0471, unsubRate: 0.649, premiumRate: 0.001, referralRate: 0.006, refsPerReferrer: 2.91 },
+    { channel: "Overall", subs: 2372147, openRate: 0.5224, CTR: 0.0518, unsubRate: 0.566, premiumRate: 0.003, referralRate: 0.036, refsPerReferrer: 2.76, isOverall: true },
   ]},
 ];
 
