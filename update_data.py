@@ -112,7 +112,10 @@ def build_grid(found):
     for (channel, wi), (seg_name, seg_id) in found.items():
         print(f"  Fetching {seg_name}...")
         ci = CHANNELS.index(channel)
-        grid[wi][ci] = fetch_segment_stats(seg_id)
+        stats = fetch_segment_stats(seg_id)
+        uuid = seg_id.split("seg_", 1)[-1]
+        stats["segUrl"] = f"https://app.beehiiv.com/segments/{uuid}/edit"
+        grid[wi][ci] = stats
     return grid
 
 def build_js(grid):
@@ -123,11 +126,12 @@ def build_js(grid):
             s = grid[wi][ci] or {"subs": 0, "openRate": 0, "CTR": 0, "unsubRate": 0,
                                  "premiumRate": 0, "referralRate": 0, "refsPerReferrer": 0}
             overall = ", isOverall: true" if channel == "Overall" else ""
+            seg_url = f', segUrl: "{s["segUrl"]}"' if s.get("segUrl") else ""
             lines.append(
                 f'    {{ channel: "{channel}", subs: {s["subs"]}, '
                 f'openRate: {s["openRate"]}, CTR: {s["CTR"]}, '
                 f'unsubRate: {s["unsubRate"]}, premiumRate: {s["premiumRate"]}, '
-                f'referralRate: {s["referralRate"]}, refsPerReferrer: {s["refsPerReferrer"]}{overall} }},'
+                f'referralRate: {s["referralRate"]}, refsPerReferrer: {s["refsPerReferrer"]}{seg_url}{overall} }},'
             )
         lines.append("  ]},")
     lines.append("];")
