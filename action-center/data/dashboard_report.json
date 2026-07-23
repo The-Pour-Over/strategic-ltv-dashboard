@@ -1,0 +1,76 @@
+{
+  "generated_at": "2026-07-22T13:32:44.340499Z",
+  "version": "v14_combined",
+  "description": "Combined QL+NP spend / QL segment subs (UTM caching fix)",
+  "segments": {
+    "3d": "seg_941e0f02-5aac-47e4-bcee-1c3a5a502082",
+    "7d": "seg_3f4e4b6f-fa8f-44ff-8c0d-328db3ac9bbf",
+    "14d": "seg_f750c3cf-34d4-40cd-bbaa-3cf9a02c5121",
+    "21d": "seg_e20905ca-3d92-476f-9e9d-bc052f723ed9"
+  },
+  "np_segments": {
+    "non_political_best_performers_18-45": {
+      "3d": "seg_75cbf39e",
+      "7d": "seg_76ef5844",
+      "14d": "seg_10258b9e",
+      "21d": "seg_6183112f"
+    },
+    "non_political_best_performers_adv+": {
+      "3d": "seg_de48e447",
+      "7d": "seg_fc8b5318",
+      "14d": "seg_c88687a8",
+      "21d": "seg_9c90e26b"
+    }
+  },
+  "data_sources": {
+    "beehiiv": {
+      "3d": 7265,
+      "7d": 18713,
+      "14d": 17294,
+      "21d": 20189
+    },
+    "meta_ql_campaign_id": "120239853994810224",
+    "meta_np_campaign_id": "120208975408300224"
+  },
+  "active_adsets": [
+    "test_video_life_change_adv+",
+    "test_notesapp_july10_18-45",
+    "winner_ugc_testimonial_psych3_anxiety_june26_adv+",
+    "winner_static_bgvariations_themedia_psych14_anxiety_Adv+",
+    "test_redshirt_ugc_testimonial_psych3_anxiety_june26_adv+",
+    "thx_page_cosignup_adv+",
+    "test_motiongraphic_youseemless_psych3_anxiety_18-45",
+    "test_static_variations_july1_Adv+",
+    "qualified_lead_best_performers_18-45",
+    "test_static_bgvariations_shapingworldview_psych3_chaos_adv+",
+    "test_round2_6ugc_testimonial_psych3_anxiety_18-45",
+    "test_ugc_testimonial_psych3_anxiety_june26_18-45",
+    "winner_mg_variations_testimonial_psych3_anxiety_18-45",
+    "test_video_life_change_18-45",
+    "winner_static_variation_mostchristians_psych9_chaos_adv+",
+    "test_static_stopped_july2_18-45",
+    "test_static_july16_18-45",
+    "winner_static_july10_adv+",
+    "qualified_broad_bestperformers_valueset",
+    "winner_UGC_psych3_anxiety_Adv+",
+    "test_motiongraphic_youseemless_psych3_anxiety_adv+",
+    "test_static_variations_june29_adv+",
+    "winner_round2_6ugc_testimonial_psych3_anxiety_adv+",
+    "thx_page_welcomevid_adv+",
+    "winner_notesapp_july10_adv+",
+    "qualified_broad_bestperformers_adv+",
+    "thx_page_PTNT_adv+",
+    "winner_videos_psych9_chaos_adv+",
+    "winner_mg_thenewsmademeangry_psych17_resentment_Adv+",
+    "test_videos_psych9_chaos_18-45",
+    "winner_mg_bgvariations_mostchristians_psych9_chaos_adv+",
+    "test_static_stopped_july2_Adv+",
+    "test_round2_video_life_change_newsletter_18-45",
+    "test_static_variations_june29_18-45",
+    "test_static_july16_adv+",
+    "test_static_variations_july1_18-45",
+    "test_round2_video_life_change_newsletter_adv+",
+    "winner_static_july10_18-45",
+    "thx_page_loadingbar_adv+"
+  ]
+}

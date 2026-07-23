@@ -1,0 +1,65 @@
+{
+  "updated": "2026-07-16",
+  "source": "Meta Ads Library sweep (page_ids in weekly-ad-report skill competitors.md)",
+  "competitors": [
+    {
+      "name": "1440",
+      "active_ads": 78,
+      "latest_move": "Relaunched Jul 15: 27 copies of 'Without motives' vs 14 of 'Free' \u2014 budget favors trust over price this week",
+      "messages": [
+        "News. Without motives.",
+        "100% Free Daily Newsletter"
+      ],
+      "note": "The ads that SURVIVED the wipe are the tell: all '100% Free Daily Newsletter' creatives. That's the message earning its keep; 'News. Without motives.' copies get cycled.",
+      "top_ad": {
+        "title": "News. Without motives.",
+        "url": "https://www.facebook.com/ads/library/?id=1760353181955017"
+      }
+    },
+    {
+      "name": "TLDR",
+      "active_ads": 112,
+      "latest_move": "Only 4 new copies this week \u2014 new angles (1.6M+ readers, ex-Google/Anthropic credibility) are small tests for now",
+      "messages": [
+        "The AI brief your CTO already reads",
+        "Built by the people who build the models",
+        "Tech news in 5 minutes, free"
+      ],
+      "note": "Longest visible runners (~5 weeks, many duplicate copies = scaling): benefit-clarity messages. The status angle ('CTO already reads') is newer and still being tested.",
+      "top_ad": {
+        "title": "Your shortcut to Tech, Startup, & Coding news",
+        "url": "https://www.facebook.com/ads/library/?id=2439129659918262"
+      }
+    },
+    {
+      "name": "The Flyover",
+      "active_ads": 43,
+      "latest_move": "Quiet week (1 new ad); riding the standing Jul 8\u20139 batch",
+      "messages": [
+        "Unspun News: Get the Facts"
+      ],
+      "note": "Three ads have run continuously since June 2023 \u2014 3+ YEARS. All identity call-outs: anti-elite positioning is their forever-winner (that's psych #9 selective filtering).",
+      "top_ad": {
+        "title": "Unspun News: Get the Facts",
+        "url": "https://www.facebook.com/ads/library/?id=2075142053881032"
+      }
+    },
+    {
+      "name": "Morning Brew",
+      "active_ads": 56,
+      "latest_move": "Cloned ONE message ~28 more times today \u2014 an all-in scale play",
+      "messages": [
+        "Trusted by millions. Actually enjoyed by them too."
+      ],
+      "note": "'Trusted by millions. Actually enjoyed by them too.' \u2014 running since Jul 10 and now duplicated across ~28 placements today. When an advertiser clones one message that hard, it's their proven winner being scaled.",
+      "top_ad": {
+        "title": "Trusted by millions. Actually enjoyed by them too.",
+        "url": "https://www.facebook.com/ads/library/?id=27471581799174151"
+      }
+    }
+  ],
+  "takeaway": "Longevity is the tell: Flyover's 3-year runners are identity call-outs (their audience's tribe badge), 1440's wipe-survivors all say 'free,' and Morning Brew is mass-scaling social proof. TPO's equivalent forever-ad would be an identity call-out + social proof hybrid \u2014 which is exactly what static_testimonial is. The playbook validation: build its successor, don't abandon the formula.",
+  "pending": "The Rundown AI page ID still missing; The Kingdom Business Owner awaiting Nicole's yes/no to join the sweep.",
+  "note_on_creatives": "Creative images can't be embedded (Meta Ad Library API restriction) \u2014 View ad opens the live rendered ad in the Ads Library.",
+  "method_note": "Meta does not publish impressions for US commercial ads (API-confirmed: impressions are only public for political and EU-delivered ads). Best available proxy: active duplicate copies per message \u2014 advertisers clone winners across placements, so copy count \u2248 delivery share. 'New this week' = copies launched in the last 7 days. Ads Library caps results at the newest 50 per page, so counts for 1440 (78 active) and TLDR (112 active) are floors, not totals."
+}

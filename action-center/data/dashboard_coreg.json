@@ -1,0 +1,37 @@
+{
+  "generated_at": "2026-07-22T13:32:48.788358Z",
+  "end_date": "2026-07-21",
+  "note": "Each co-reg opt-in joins BOTH Decaf and News Health (one click). Denominator = thx_page_cosignup primary subs. conversion_rate = co-reg opt-ins / primary subs. effective_cpa credits the variant for the cross-sell.",
+  "total_since_launch": 48,
+  "launch": "2026-07-09",
+  "cohorts": {
+    "3d": {
+      "coreg_optins": 14,
+      "cosignup_primary_subs": 39,
+      "conversion_rate": 35.9,
+      "cosignup_cpa": 3.38,
+      "cosignup_effective_cpa": 2.49
+    },
+    "7d": {
+      "coreg_optins": 30,
+      "cosignup_primary_subs": 102,
+      "conversion_rate": 29.4,
+      "cosignup_cpa": 3.11,
+      "cosignup_effective_cpa": 2.4
+    },
+    "14d": {
+      "coreg_optins": 48,
+      "cosignup_primary_subs": 105,
+      "conversion_rate": 45.7,
+      "cosignup_cpa": 2.98,
+      "cosignup_effective_cpa": 2.05
+    },
+    "21d": {
+      "coreg_optins": 48,
+      "cosignup_primary_subs": 0,
+      "conversion_rate": null,
+      "cosignup_cpa": null,
+      "cosignup_effective_cpa": 0.0
+    }
+  }
+}

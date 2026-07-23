@@ -1,0 +1,35 @@
+{
+  "generated_at": "2026-03-28T20:34:49.118378Z",
+  "version": "v9",
+  "data_sources": {
+    "beehiiv_non_political": "78730 total subscribers (67663 active, 11067 inactive)",
+    "beehiiv_qualified_lead": "4080 subscribers (3837 active, 243 inactive)",
+    "meta": "Fresh pull from Meta Ads API (cost_per_subscription trusted as CAC)",
+    "campaigns": [
+      "Non political",
+      "Qualified Lead"
+    ]
+  },
+  "active_adsets": [
+    "broad_bestperformers_adv+",
+    "qualified_lead_best_performers_18-45",
+    "broad_bestperformers_18-45",
+    "qualified_broad_bestperformers_adv+"
+  ],
+  "key_changes_v9": [
+    "Inactive/unsubscribed subscribers now included in engagement calculations",
+    "Unsub rate factored into LTV formula: LTV = base_ltv \u00d7 (1 - unsub_rate)",
+    "New fields: unsub_rate, active_count, inactive_count",
+    "Engagement metrics now match Beehiiv UI (lower than v8 due to inactive subs in denominator)"
+  ],
+  "assumptions": {
+    "LTV_OPEN_WEIGHT": 0.1,
+    "LTV_CLICK_WEIGHT": 0.9,
+    "OVERALL_CPM": 45.0,
+    "OVERALL_CPC": 0.85,
+    "SENDS_PER_YEAR": 150,
+    "ANNUAL_CHURN": 0.46,
+    "DISCOUNT_RATE": 0.3,
+    "LTV_REFERRAL": 5.0
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "winner": {
+    "name": "static_testimonial_psych3_anxiety",
+    "creative_id": "1314422026701286",
+    "stats": "$5.78 vs $6.20 set avg \u00b7 6.3% CTR \u00b7 ~31% of Adv+ spend",
+    "diagnosis": "All metrics strong \u2014 the risk is fatigue at this spend share. Next step: refresh hooks + backgrounds, pivot felt needs, keep the proven testimonial skeleton.",
+    "note": "SAMPLE BATCH from the current champion. Check = approve: the creative gets built, shown for a final look, then uploaded PAUSED into that theme's test ad set pair. X = skip."
+  },
+  "batch": [
+    {
+      "id": "v1",
+      "dim": "Hook swap",
+      "name": "static_ihatedhowangry_psych3_resentment",
+      "hook": "\u201cI used to hate how angry the news made me.\u201d",
+      "brief": "HOOK SWAP RULE: change ONLY the first line. Same original champion background, same font, same layout, same everything else.",
+      "why": "First-line swaps are the cheapest fatigue reset; resentment is underused with proven pull.",
+      "status": "built",
+      "build_at": "2026-07-23T14:29:15.680Z",
+      "built_img": "/data/built_v1.jpg",
+      "built_at": "2026-07-23T15:20:40.322786+00:00",
+      "build_note": "hook swap per rule: champion original background (reconstructed), matched font, only the hook changed"
+    },
+    {
+      "id": "v2",
+      "dim": "Hook swap",
+      "name": "static_thenewsfeltlike_psych3_chaos",
+      "hook": "\u201cThe news felt like chaos before 7 a.m.\u201d",
+      "brief": "HOOK SWAP RULE: change ONLY the first line. Same original champion background, same font, same layout, same everything else.",
+      "why": "Second hook angle so the swaps A/B against each other.",
+      "status": "built",
+      "build_at": "2026-07-23T14:29:16.908Z",
+      "built_img": "/data/built_v2.jpg",
+      "built_at": "2026-07-23T15:20:40.322786+00:00",
+      "build_note": "hook swap per rule: champion original background (reconstructed), matched font, only the hook changed"
+    },
+    {
+      "id": "v3",
+      "dim": "Background",
+      "name": "ocean_static_iusedtostart_psych3_anxiety",
+      "hook": "Same copy, ocean-sunrise background",
+      "brief": "Identical text, ocean-sunrise palette.",
+      "why": "Isolates the background variable."
+    },
+    {
+      "id": "v4",
+      "dim": "Background",
+      "name": "field_static_iusedtostart_psych3_anxiety",
+      "hook": "Same copy, golden-field background",
+      "brief": "Second background arm, text unchanged.",
+      "why": "Two bg arms + champ = a clean 3-way visual test."
+    },
+    {
+      "id": "v5",
+      "dim": "Proof escalation",
+      "name": "static_iusedtostart_psych12_anxiety",
+      "hook": "Same open, harder proof line",
+      "brief": "Swap the join-line for empirical proof: 1.6M readers \u00b7 under 5 minutes \u00b7 free.",
+      "why": "The proof line is the one untested block in the skeleton."
+    },
+    {
+      "id": "v6",
+      "dim": "Damaging admission",
+      "name": "static_imembarrassed_psych11_anxiety",
+      "hook": "\u201cI'm embarrassed how much the news controlled my mood.\u201d",
+      "brief": "Vulnerable open (psych 11), then the standard after-state + proof.",
+      "why": "Different psychological engine on the same chassis."
+    },
+    {
+      "id": "v7",
+      "dim": "Open loop",
+      "name": "static_iusedtostart_psych10_anxiety",
+      "hook": "Champ copy + a P.S. cliffhanger",
+      "brief": "Add final line: P.S. \u2014 the 5-minute part is what nobody believes until they try it.",
+      "why": "Zero-risk additive test; P.S. lines are unexploited in statics."
+    }
+  ],
+  "competitor": {
+    "source_note": "From the Jul 16 Ads Library sweep on the Creative Performance page. Each option names the competitor ad it's based on \u2014 these are TPO-ized takes, not copies.",
+    "batch": [
+      {
+        "id": "c1",
+        "dim": "From Morning Brew",
+        "based_on": "\u201cTrusted by millions. Actually enjoyed by them too.\u201d \u2014 cloned ~28x in one day (their proven winner being scaled)",
+        "name": "static_readby16mchristians_psych3_desire",
+        "hook": "\u201cRead by 1.6M Christians. Actually enjoyed by them too.\u201d",
+        "brief": "Text-forward static on the champ's sunrise palette. Body flips the trust claim into enjoyment \u2014 news you don't have to brace for.",
+        "why": "When an advertiser clones one message 28 times, it's proven. The enjoyment-flip is the exact psychological move that made it work, translated to your social proof.",
+        "their_thumb": "comp_morningbrew",
+        "library_url": "https://www.facebook.com/ads/library/?id=989361770594425",
+        "their_aspect": "972 / 674"
+      },
+      {
+        "id": "c2",
+        "dim": "From The Flyover",
+        "based_on": "\u201cUnspun News: Get the Facts\u201d \u2014 identity call-outs running continuously for 3+ YEARS (their forever-winner)",
+        "name": "static_newsforchristians_psych9_resentment",
+        "hook": "\u201cNews for Christians who are tired of the spin.\u201d",
+        "brief": "Bold identity call-out headline card, minimal body: Christ-first perspective \u00b7 5 minutes \u00b7 free. One CTA.",
+        "why": "Flyover proves identity call-outs never fatigue. Your own psych-9 tests (mostchristians) already work \u2014 this is the sharper, permanent version.",
+        "their_thumb": "comp_flyover",
+        "library_url": "https://www.facebook.com/ads/library/?id=1409043281056065",
+        "their_aspect": "952 / 718"
+      },
+      {
+        "id": "c3",
+        "dim": "From 1440",
+        "based_on": "\u201c100% Free Daily Newsletter\u201d \u2014 the only creatives that SURVIVED their account wipe (the message earning its keep)",
+        "name": "static_christfirstnews_psych17_waste",
+        "hook": "\u201cChrist-first news. 5 minutes. 100% free.\u201d",
+        "brief": "Ultra-plain benefit-clarity static \u2014 three short lines, no story. Third-grade reading level on purpose (psych 17).",
+        "why": "1440's survivors say the plainest possible value line wins when everything else dies. You've never tested a pure clarity ad.",
+        "their_thumb": "comp_1440",
+        "library_url": "https://www.facebook.com/ads/library/?id=3421081298069957",
+        "their_aspect": "1004 / 598"
+      },
+      {
+        "id": "c4",
+        "dim": "From TLDR",
+        "based_on": "\u201cBuilt by the people who build the models\u201d \u2014 credibility/authority angle they're testing on 1.6M+ readers",
+        "name": "static_wereadeverything_psych5_suffocation",
+        "hook": "\u201cWe read 100+ news sources every morning so you don't have to.\u201d",
+        "brief": "Authority static: the work-on-your-behalf framing, ending with the 5-minute promise and reader count.",
+        "why": "TLDR is testing maker-credibility; your version of authority is labor + scale. Suffocation (news overwhelm) is the felt need it relieves.",
+        "their_thumb": "comp_tldr",
+        "library_url": "https://www.facebook.com/ads/library/?id=1014888254627146",
+        "their_aspect": "972 / 622"
+      }
+    ]
+  }
+}

@@ -1,0 +1,394 @@
+{
+  "as_of": "2026-07-22",
+  "account_id": "125820816056365",
+  "retest_adset_id": "120249351231520224",
+  "ltv_cohort": "7d",
+  "benchmarks": {
+    "adv+": {
+      "adset_name": "qualified_broad_bestperformers_adv+",
+      "adset_id": "120239853994820224",
+      "window": "2026-07-15..2026-07-21",
+      "spend_7d": 38449.41,
+      "meta_subs_7d": 6197,
+      "meta_cpa_7d": 6.2,
+      "beehiiv_cac_7d": 3.39,
+      "beehiiv_ltv_7d": 18.6,
+      "ltv_cac_7d": 5.49,
+      "beehiiv_subs_7d": 11346
+    },
+    "18-45": {
+      "adset_name": "qualified_lead_best_performers_18-45",
+      "adset_id": "120240614456640224",
+      "window": "2026-07-15..2026-07-21",
+      "spend_7d": 7020.12,
+      "meta_subs_7d": 796,
+      "meta_cpa_7d": 8.82,
+      "beehiiv_cac_7d": 5.93,
+      "beehiiv_ltv_7d": 20.18,
+      "ltv_cac_7d": 3.4,
+      "beehiiv_subs_7d": 1183
+    }
+  },
+  "tests": [
+    {
+      "test": "test_notesapp_july10_18-45",
+      "adset_id": "120249106111080224",
+      "audience": "18-45",
+      "launched": "2026-07-10",
+      "learning_exit": "2026-07-15",
+      "judgeable_from": "2026-07-17",
+      "status": "judgeable",
+      "winner": {
+        "ad_name": "white_static_istoppedstarting_psych11_resentment",
+        "ad_id": "120249106188050224",
+        "creative_id": "1060584153023696",
+        "spend": 1257.13,
+        "meta_cpa": 9.18,
+        "meta_subs": 137,
+        "beehiiv_subs_lifetime": 183,
+        "beehiiv_segment": "seg_1e523104-23d2-4488-9a40-10c5dc4c3bf0",
+        "segment_metrics": {
+          "open_rate": 0.6027,
+          "cto": 0.2873,
+          "unsub_rate": 0.033,
+          "source": "seg_1e523104 metrics 2026-07-22"
+        },
+        "true_cpa": 6.87,
+        "beehiiv_ltv_7d": 28.94,
+        "beehiiv_ltv_cac_7d": 4.21,
+        "beehiiv_subs_7d": 183,
+        "ltv_match": "segment",
+        "promoted_copy": {
+          "adset_name": "qualified_broad_bestperformers_adv+",
+          "ltv": 26.27,
+          "ltv_cac": 8.39,
+          "subs_7d": 13,
+          "match": "exact"
+        }
+      },
+      "note": "Closest call of the batch: 16% over on true CPA, and the creative shows strong LTV where it runs in the winning set \u2014 Deny is defensible.",
+      "qa": [
+        [
+          "Why is it flagged?",
+          "True CPA $6.87 vs the 18-45 winning set's $5.93 \u2014 16% over. The closest miss of the batch."
+        ],
+        [
+          "What's working?",
+          "Subscriber quality, measured on its own 18-45 test subs: LTV $28.94 (4.2x) vs the winning set's $20.18 (3.4x) \u2014 it wins on value-per-dollar. A promoted copy already runs in the Adv+ winning set at $26.27 (8.4x, small 13-sub sample)."
+        ],
+        [
+          "What's not working?",
+          "Cost. 18-45 is expensive and this creative pays 16% more per sub than the incumbents."
+        ],
+        [
+          "Approve or deny?",
+          "Lean Approve (promote): its own subs deliver $4.21 of LTV per $1 vs the set's $3.40. If you're strict on CPA, Deny parks it."
+        ],
+        [
+          "What would I retest?",
+          "Nothing yet \u2014 let it run or promote. If it drifts, retest white vs black background with a tightened headline: static_istoppedstarting_psych11_resentment."
+        ]
+      ],
+      "verdict": "fail",
+      "pct_over_benchmark": 15.9,
+      "verdict_basis": "true_cpa"
+    },
+    {
+      "test": "test_static_july16_18-45",
+      "adset_id": "120249202928900224",
+      "audience": "18-45",
+      "launched": "2026-07-14",
+      "learning_exit": "2026-07-19",
+      "judgeable_from": "2026-07-21",
+      "status": "judgeable",
+      "winner": {
+        "ad_name": "static_theworldwenton_psych3_anxiety",
+        "ad_id": "120249202962260224",
+        "creative_id": "874704621946053",
+        "spend": 874.83,
+        "meta_cpa": 14.34,
+        "meta_subs": 61,
+        "beehiiv_subs_lifetime": 94,
+        "beehiiv_segment": "seg_2c19fb08-de80-4f42-b8d2-0b2c56b8e63d",
+        "segment_metrics": {
+          "open_rate": 0.3717,
+          "cto": 0.2797,
+          "unsub_rate": 0.053,
+          "source": "seg_2c19fb08 metrics 2026-07-22"
+        },
+        "true_cpa": 9.31,
+        "beehiiv_ltv_7d": 16.43,
+        "beehiiv_ltv_cac_7d": 1.76,
+        "beehiiv_subs_7d": 94,
+        "ltv_match": "segment",
+        "promoted_copy": null
+      },
+      "note": "Runner-up static_iusedtodoomscroll is also still active and also misses; pausing the ad set turns both off.",
+      "qa": [
+        [
+          "Why is it flagged?",
+          "True CPA $9.31 vs $5.93 \u2014 57% over. Won its test, nowhere near winning-set economics at 18-45."
+        ],
+        [
+          "What's working?",
+          "Beat 5 siblings, and the same creative does materially better with Adv+ ($5.40)."
+        ],
+        [
+          "What's not working?",
+          "Cost AND value: segment-computed LTV $16.43 (1.8x) vs the set's $20.18 (3.4x). Its subs open rarely (37%) but click hard when they do (28% CTO)."
+        ],
+        [
+          "Approve or deny?",
+          "Deny (park). 57% over with below-par value \u2014 retest_in_future keeps it retrievable."
+        ],
+        [
+          "What would I retest?",
+          "The runner-up iusedtodoomscroll had better CPA \u2014 its habit-change angle may fit 18-45 better: static_iusedtodoomscroll_psych13_helplessness."
+        ]
+      ],
+      "verdict": "fail",
+      "pct_over_benchmark": 57.0,
+      "verdict_basis": "true_cpa"
+    },
+    {
+      "test": "test_static_july16_adv+",
+      "adset_id": "120249202928480224",
+      "audience": "adv+",
+      "launched": "2026-07-14",
+      "learning_exit": "2026-07-18",
+      "judgeable_from": "2026-07-20",
+      "status": "judgeable",
+      "winner": {
+        "ad_name": "static_theworldwenton_psych3_anxiety",
+        "ad_id": "120249202960410224",
+        "creative_id": "874704621946053",
+        "spend": 1101.71,
+        "meta_cpa": 7.76,
+        "meta_subs": 142,
+        "beehiiv_subs_lifetime": 204,
+        "beehiiv_segment": "seg_8a959013-e857-4c17-94dd-1db1d8b7af14",
+        "segment_metrics": {
+          "open_rate": 0.7083,
+          "cto": 0.1337,
+          "unsub_rate": 0.02,
+          "source": "seg_8a959013 metrics 2026-07-22"
+        },
+        "true_cpa": 5.4,
+        "beehiiv_ltv_7d": 16.39,
+        "beehiiv_ltv_cac_7d": 3.04,
+        "beehiiv_subs_7d": 204,
+        "ltv_match": "segment",
+        "promoted_copy": null
+      },
+      "note": "Same creative as the 18-45 card; approving both parks two paused copies in retest_in_future.",
+      "qa": [
+        [
+          "Why is it flagged?",
+          "True CPA $5.40 vs the Adv+ set's $3.39 \u2014 59% over. Adv+ is your cheapest, hardest bar."
+        ],
+        [
+          "What's working?",
+          "Volume at reasonable cost: 204 beehiiv subs on $1,102."
+        ],
+        [
+          "What's not working?",
+          "Value below par: segment LTV $16.39 (3.0x) vs the set's $18.60 (5.5x)."
+        ],
+        [
+          "Approve or deny?",
+          "Deny (park). Fails cleanly in both audiences on cost and value."
+        ],
+        [
+          "What would I retest?",
+          "Proof-heavy variation \u2014 keep the emotional hook, add empirical proof: static_theworldwenton_psych12_anxiety."
+        ]
+      ],
+      "verdict": "fail",
+      "pct_over_benchmark": 59.3,
+      "verdict_basis": "true_cpa"
+    },
+    {
+      "test": "test_round2_video_life_change_newsletter_adv+",
+      "adset_id": "120249257224180224",
+      "audience": "adv+",
+      "launched": "2026-07-16",
+      "learning_exit": "2026-07-19",
+      "judgeable_from": "2026-07-21",
+      "status": "judgeable",
+      "winner": {
+        "ad_name": "B1a_test_video_life_change_newsletter",
+        "ad_id": "120249257248920224",
+        "creative_id": "1054175376963840",
+        "spend": 999.13,
+        "meta_cpa": 8.92,
+        "meta_subs": 112,
+        "beehiiv_subs_lifetime": 181,
+        "beehiiv_segment": "seg_82b30de9-46db-430c-9658-4c5da09abcb8",
+        "is_video": true,
+        "hook_rate": 70.4,
+        "hold_rate": 11.3,
+        "segment_metrics": {
+          "open_rate": 0.5126,
+          "cto": 0.3123,
+          "unsub_rate": 0.028,
+          "source": "seg_82b30de9 metrics 2026-07-22"
+        },
+        "true_cpa": 5.52,
+        "beehiiv_ltv_7d": 27.12,
+        "beehiiv_ltv_cac_7d": 4.91,
+        "beehiiv_subs_7d": 181,
+        "ltv_match": "segment",
+        "promoted_copy": null
+      },
+      "note": "Clear winner over B1b-B1e variants; 63% over the adv+ true-CPA benchmark. Subscriber quality is solid (4.9x) \u2014 cost is the problem.",
+      "qa": [
+        [
+          "Why is it flagged?",
+          "True CPA $5.52 vs $3.39 \u2014 63% over, the worst cost gap in the queue. The rule is cost-based."
+        ],
+        [
+          "What's working?",
+          "Elite hook: 70.4% of viewers start watching. And its subs are solid: $27.12 LTV (4.9x), just under the set's 5.5x."
+        ],
+        [
+          "What's not working?",
+          "Retention: hold is 11.3% \u2014 9 in 10 who start never reach ThruPlay. The leak is the middle of the video, not after signup."
+        ],
+        [
+          "Approve or deny?",
+          "Deny (park) on cost \u2014 but it's the strongest retest candidate here: steal the hook, recut the middle."
+        ],
+        [
+          "What would I retest?",
+          "Same hook, cut to testimonial proof within 5s, one CTA: video_whatnobodytells_psych10_chaos and ugc_whatnobodytells_psych3_anxiety."
+        ]
+      ],
+      "verdict": "fail",
+      "pct_over_benchmark": 62.8,
+      "verdict_basis": "true_cpa"
+    },
+    {
+      "test": "test_round2_video_life_change_newsletter_18-45",
+      "adset_id": "120249257224890224",
+      "audience": "18-45",
+      "launched": "2026-07-16",
+      "learning_exit": "2026-07-20",
+      "judgeable_from": "2026-07-22",
+      "status": "judgeable",
+      "winner": {
+        "ad_name": "B1a_test_video_life_change_newsletter",
+        "ad_id": "120249257250360224",
+        "creative_id": "1054175376963840",
+        "spend": 1004.87,
+        "meta_cpa": 13.05,
+        "meta_subs": 77,
+        "beehiiv_subs_lifetime": 120,
+        "beehiiv_segment": "seg_7642277c-ebfa-4dbd-8fdf-bd01dc2aed50",
+        "is_video": true,
+        "hook_rate": 51.0,
+        "hold_rate": 7.5,
+        "segment_metrics": {
+          "open_rate": 0.6368,
+          "cto": 0.2068,
+          "unsub_rate": 0.033,
+          "source": "seg_7642277c metrics 2026-07-22"
+        },
+        "true_cpa": 8.37,
+        "beehiiv_ltv_7d": 22.01,
+        "beehiiv_ltv_cac_7d": 2.63,
+        "beehiiv_subs_7d": 120,
+        "ltv_match": "segment",
+        "promoted_copy": null
+      },
+      "note": "Became judgeable Jul 22 (48h after leaving learning Jul 20). Same creative as the Adv+ card.",
+      "qa": [
+        [
+          "Why is it flagged?",
+          "True CPA $8.37 vs $5.93 \u2014 41% over, judged Jul 22. Its 18-45 subs value at $22.01 (2.6x) vs the set's 3.4x."
+        ],
+        [
+          "What's working?",
+          "Hook still decent at 51%, though weaker than Adv+ (70.4%)."
+        ],
+        [
+          "What's not working?",
+          "Hold collapses to 7.5% and sub value is below par with this audience."
+        ],
+        [
+          "Approve or deny?",
+          "Deny (park). Fails harder than the Adv+ side on every axis."
+        ],
+        [
+          "What would I retest?",
+          "Same recut with a punchier first 3 seconds for 18-45: video_whatnobodytells_psych10_anxiety."
+        ]
+      ],
+      "verdict": "fail",
+      "pct_over_benchmark": 41.1,
+      "verdict_basis": "true_cpa"
+    },
+    {
+      "test": "test_motiongraphic_youseemless_psych3_anxiety_18-45",
+      "adset_id": "120249276427570224",
+      "audience": "18-45",
+      "launched": "2026-07-17",
+      "learning_exit": null,
+      "judgeable_from": null,
+      "status": "learning",
+      "winner": {
+        "ad_name": "test_motiongraphic_youseemless_psych3_anxiety_ocean2",
+        "ad_id": "120249276486070224",
+        "creative_id": "2530092287434954",
+        "spend": 204.49,
+        "meta_cpa": 14.61,
+        "meta_subs": 14,
+        "true_cpa": null,
+        "beehiiv_ltv_7d": null,
+        "beehiiv_ltv_cac_7d": null,
+        "beehiiv_subs_7d": null,
+        "ltv_match": null,
+        "promoted_copy": null
+      },
+      "note": "~25 subs since Jul 17 launch; needs ~50 to leave learning.",
+      "verdict": null
+    },
+    {
+      "test": "test_motiongraphic_youseemless_psych3_anxiety_adv+",
+      "adset_id": "120249276427260224",
+      "audience": "adv+",
+      "launched": "2026-07-17",
+      "learning_exit": "2026-07-22",
+      "judgeable_from": "2026-07-24",
+      "status": "in_48h_window",
+      "winner": {
+        "ad_name": "test_motiongraphic_youseemless_psych3_anxiety_ocean2",
+        "ad_id": "120249276485590224",
+        "creative_id": "2530092287434954",
+        "spend": 410.53,
+        "meta_cpa": 8.92,
+        "meta_subs": 46,
+        "true_cpa": null,
+        "beehiiv_ltv_7d": null,
+        "beehiiv_ltv_cac_7d": null,
+        "beehiiv_subs_7d": null,
+        "ltv_match": null,
+        "promoted_copy": null
+      },
+      "note": "Crossed ~50 subs Jul 22; judgeable Jul 24 (true CPA will be computed then).",
+      "verdict": null
+    },
+    {
+      "test": "nh_static_imagetest_july20_adv+",
+      "adset_id": "120249344704260224",
+      "audience": "adv+",
+      "launched": "2026-07-21",
+      "learning_exit": null,
+      "judgeable_from": null,
+      "status": "paused_externally",
+      "winner": null,
+      "note": "Paused in Meta on Jul 22 while still learning (13 subs). Optimizes to Website subscriptions, not the qualified-lead event.",
+      "verdict": null
+    }
+  ],
+  "flagged_count": 5
+}
