@@ -424,7 +424,7 @@
         "ad_name": "wildflower_static_istoppedstarting_psych11_resentment",
         "ad_id": "120249394832660224",
         "creative_id": "2188022211814458",
-        "spend": 506.2,
+        "spend": 516.1,
         "meta_cpa": 6.41,
         "meta_subs": 79,
         "beehiiv_segment": "seg_3ecf6a56-0234-4129-8b4e-3a23240e7013",
@@ -435,9 +435,9 @@
           "unsub_rate": 0.034,
           "source": "seg_3ecf6a56 metrics 2026-07-27"
         },
-        "true_cpa": 4.36,
+        "true_cpa": 4.45,
         "beehiiv_ltv_7d": 42.41,
-        "beehiiv_ltv_cac_7d": 9.73,
+        "beehiiv_ltv_cac_7d": 9.53,
         "beehiiv_subs_7d": 116,
         "ltv_match": "segment",
         "promoted_copy": {
@@ -464,7 +464,7 @@
         ],
         [
           "Approve or deny?",
-          "Genuine judgment call: it misses the cost bar by 37%, but its own subs are exceptional \u2014 ~$9.7 of LTV per $1 vs the set's ~$5.2 (caveat: 4-day-old subscribers always engage hot, so some of that premium will decay). Promote if you trust the engagement; park if you want the cost bar respected \u2014 the copy is already promoted either way."
+          "Genuine judgment call: it misses the cost bar by ~40%, but its own subs are exceptional \u2014 ~$9.5 of LTV per $1 vs the set's ~$5.2 (caveat: 4-day-old subscribers always engage hot, so some of that premium will decay). Promote if you trust the engagement; park if you want the cost bar respected \u2014 the copy is already promoted either way."
         ],
         [
           "What would I retest?",
@@ -472,7 +472,7 @@
         ]
       ],
       "verdict": "fail",
-      "pct_over_benchmark": 37.1,
+      "pct_over_benchmark": 39.9,
       "verdict_basis": "true_cpa"
     },
     {

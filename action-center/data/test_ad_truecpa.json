@@ -1,0 +1,46 @@
+{
+ "as_of": "2026-07-27",
+ "min_subs_for_ltv": 20,
+ "ads": {
+  "120249394832660224": {
+   "bh_subs": 116,
+   "lifetime_spend": 516.1,
+   "true_cpa": 4.45,
+   "ltv": 42.41,
+   "ltv_cac": 9.53,
+   "segment": "seg_3ecf6a56-0234-4129-8b4e-3a23240e7013"
+  },
+  "120249394832680224": {
+   "bh_subs": 34,
+   "lifetime_spend": 179.37,
+   "true_cpa": 5.28,
+   "ltv": 38.09,
+   "ltv_cac": 7.21,
+   "segment": "seg_35923b24-d64f-44d8-98aa-d87def472c48"
+  },
+  "120249394832690224": {
+   "bh_subs": 6,
+   "lifetime_spend": 13.4,
+   "true_cpa": 2.23,
+   "ltv": null,
+   "ltv_cac": null,
+   "segment": "seg_9ec3b75f-098c-4c74-9a90-b2e4a2c58c97"
+  },
+  "120249394832670224": {
+   "bh_subs": 1,
+   "lifetime_spend": 7.22,
+   "true_cpa": 7.22,
+   "ltv": null,
+   "ltv_cac": null,
+   "segment": "seg_7288c934-405c-4563-a0d7-6077fe5574aa"
+  },
+  "120249394832700224": {
+   "bh_subs": 5,
+   "lifetime_spend": 19.87,
+   "true_cpa": 3.97,
+   "ltv": null,
+   "ltv_cac": null,
+   "segment": "seg_eea1bbfb-c54c-4818-90dc-854398a30ff0"
+  }
+ }
+}
