@@ -14,11 +14,30 @@
       "hook": "\u201cI used to hate how angry the news made me.\u201d",
       "brief": "HOOK SWAP RULE: change ONLY the first line. Same original champion background, same font, same layout, same everything else.",
       "why": "First-line swaps are the cheapest fatigue reset; resentment is underused with proven pull.",
-      "status": "built",
+      "status": "uploaded",
       "build_at": "2026-07-23T14:29:15.680Z",
       "built_img": "/data/built_v1.jpg",
       "built_at": "2026-07-23T15:20:40.322786+00:00",
-      "build_note": "hook swap per rule: champion original background (reconstructed), matched font, only the hook changed"
+      "build_note": "hook swap per rule: champion original background (reconstructed), matched font, only the hook changed",
+      "upload_at": "2026-07-24T18:59:00.038Z",
+      "uploaded_at": "2026-07-24T19:02:07+00:00",
+      "ad_ids": [
+        "120249421490050224",
+        "120249421486970224"
+      ],
+      "adset_ids": [
+        "120249421485760224",
+        "120249421484490224"
+      ],
+      "creative_meta_id": "1489319143240716",
+      "adset_names": [
+        "test_hookvariations_jul25_18-45",
+        "test_hookvariations_jul25_adv+"
+      ],
+      "adset_group": "hookvariations",
+      "copy_note": "house preview text/headline (rebuilt 2026-07-24)",
+      "go_live_at": "2026-07-25T00:01:00-05:00",
+      "schedule_note": "armed ACTIVE with ad set start_time \u2014 Meta begins delivery at 12:01am CT Jul 25"
     },
     {
       "id": "v2",
@@ -27,11 +46,30 @@
       "hook": "\u201cThe news felt like chaos before 7 a.m.\u201d",
       "brief": "HOOK SWAP RULE: change ONLY the first line. Same original champion background, same font, same layout, same everything else.",
       "why": "Second hook angle so the swaps A/B against each other.",
-      "status": "built",
+      "status": "uploaded",
       "build_at": "2026-07-23T14:29:16.908Z",
       "built_img": "/data/built_v2.jpg",
       "built_at": "2026-07-23T15:20:40.322786+00:00",
-      "build_note": "hook swap per rule: champion original background (reconstructed), matched font, only the hook changed"
+      "build_note": "hook swap per rule: champion original background (reconstructed), matched font, only the hook changed",
+      "upload_at": "2026-07-24T18:59:01.390Z",
+      "uploaded_at": "2026-07-24T19:02:42.575968+00:00",
+      "ad_ids": [
+        "120249421491820224",
+        "120249421487410224"
+      ],
+      "adset_ids": [
+        "120249421485760224",
+        "120249421484490224"
+      ],
+      "creative_meta_id": "1065802059150968",
+      "adset_names": [
+        "test_hookvariations_jul25_18-45",
+        "test_hookvariations_jul25_adv+"
+      ],
+      "adset_group": "hookvariations",
+      "copy_note": "house preview text/headline (rebuilt 2026-07-24)",
+      "go_live_at": "2026-07-25T00:01:00-05:00",
+      "schedule_note": "armed ACTIVE with ad set start_time \u2014 Meta begins delivery at 12:01am CT Jul 25"
     },
     {
       "id": "v3",
@@ -63,7 +101,31 @@
       "name": "static_imembarrassed_psych11_anxiety",
       "hook": "\u201cI'm embarrassed how much the news controlled my mood.\u201d",
       "brief": "Vulnerable open (psych 11), then the standard after-state + proof.",
-      "why": "Different psychological engine on the same chassis."
+      "why": "Different psychological engine on the same chassis.",
+      "status": "uploaded",
+      "build_at": "2026-07-24T18:55:55.412Z",
+      "built_img": "/data/built_v6.jpg",
+      "built_at": "2026-07-24T18:57:36+00:00",
+      "build_note": "damaging-admission hook on the standard chassis: champion original background, matched font/layout, only the hook line changed",
+      "upload_at": "2026-07-24T18:58:49.489Z",
+      "uploaded_at": "2026-07-24T19:02:15+00:00",
+      "ad_ids": [
+        "120249421494850224",
+        "120249421489020224"
+      ],
+      "adset_ids": [
+        "120249421485760224",
+        "120249421484490224"
+      ],
+      "creative_meta_id": "1069171025786074",
+      "adset_names": [
+        "test_hookvariations_jul25_18-45",
+        "test_hookvariations_jul25_adv+"
+      ],
+      "adset_group": "hookvariations",
+      "copy_note": "house preview text/headline (rebuilt 2026-07-24)",
+      "go_live_at": "2026-07-25T00:01:00-05:00",
+      "schedule_note": "armed ACTIVE with ad set start_time \u2014 Meta begins delivery at 12:01am CT Jul 25"
     },
     {
       "id": "v7",

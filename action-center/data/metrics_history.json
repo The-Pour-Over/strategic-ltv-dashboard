@@ -895,5 +895,120 @@
       "subs": 20189,
       "total_spend": 75967.61
     }
+  },
+  {
+    "date": "2026-07-23",
+    "cohort_7d": {
+      "open_rate": 57.39,
+      "cto_rate": 23.21,
+      "unsub_rate": 4.53,
+      "cpa": 3.92,
+      "ltv_per_sub": 21.51,
+      "ltv_cac_ratio": 5.49,
+      "subs": 17597,
+      "total_spend": 68990.07
+    },
+    "cohort_21d": {
+      "open_rate": 53.2,
+      "cto_rate": 11.45,
+      "unsub_rate": 12.37,
+      "cpa": 3.81,
+      "ltv_per_sub": 9.04,
+      "ltv_cac_ratio": 2.37,
+      "subs": 19600,
+      "total_spend": 74685.68
+    }
+  },
+  {
+    "date": "2026-07-24",
+    "cohort_7d": {
+      "open_rate": 58.78,
+      "cto_rate": 24.24,
+      "unsub_rate": 4.38,
+      "cpa": 3.85,
+      "ltv_per_sub": 23.11,
+      "ltv_cac_ratio": 6.0,
+      "subs": 17300,
+      "total_spend": 66596.83
+    },
+    "cohort_21d": {
+      "open_rate": 53.71,
+      "cto_rate": 11.61,
+      "unsub_rate": 12.42,
+      "cpa": 3.79,
+      "ltv_per_sub": 9.24,
+      "ltv_cac_ratio": 2.44,
+      "subs": 19479,
+      "total_spend": 73821.25
+    }
+  },
+  {
+    "date": "2026-07-25",
+    "cohort_7d": {
+      "open_rate": 56.98,
+      "cto_rate": 22.57,
+      "unsub_rate": 4.76,
+      "cpa": 3.8,
+      "ltv_per_sub": 20.64,
+      "ltv_cac_ratio": 5.43,
+      "subs": 16400,
+      "total_spend": 62253.16
+    },
+    "cohort_21d": {
+      "open_rate": 53.38,
+      "cto_rate": 11.28,
+      "unsub_rate": 12.52,
+      "cpa": 3.97,
+      "ltv_per_sub": 8.91,
+      "ltv_cac_ratio": 2.24,
+      "subs": 18804,
+      "total_spend": 74618.96
+    }
+  },
+  {
+    "date": "2026-07-26",
+    "cohort_7d": {
+      "open_rate": 54.44,
+      "cto_rate": 21.14,
+      "unsub_rate": 4.95,
+      "cpa": 3.67,
+      "ltv_per_sub": 18.37,
+      "ltv_cac_ratio": 5.01,
+      "subs": 15630,
+      "total_spend": 57326.46
+    },
+    "cohort_21d": {
+      "open_rate": 53.07,
+      "cto_rate": 11.11,
+      "unsub_rate": 12.67,
+      "cpa": 3.97,
+      "ltv_per_sub": 8.7,
+      "ltv_cac_ratio": 2.19,
+      "subs": 18159,
+      "total_spend": 72026.78
+    }
+  },
+  {
+    "date": "2026-07-27",
+    "cohort_7d": {
+      "open_rate": 55.67,
+      "cto_rate": 22.93,
+      "unsub_rate": 4.59,
+      "cpa": 3.72,
+      "ltv_per_sub": 20.58,
+      "ltv_cac_ratio": 5.53,
+      "subs": 15190,
+      "total_spend": 56511.18
+    },
+    "cohort_21d": {
+      "open_rate": 52.96,
+      "cto_rate": 11.39,
+      "unsub_rate": 12.3,
+      "cpa": 4.03,
+      "ltv_per_sub": 8.96,
+      "ltv_cac_ratio": 2.22,
+      "subs": 16991,
+      "total_spend": 68473.44
+    }
   }
 ]

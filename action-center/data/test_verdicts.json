@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-07-22",
+  "as_of": "2026-07-27",
   "account_id": "125820816056365",
   "retest_adset_id": "120249351231520224",
   "ltv_cohort": "7d",
@@ -7,26 +7,26 @@
     "adv+": {
       "adset_name": "qualified_broad_bestperformers_adv+",
       "adset_id": "120239853994820224",
-      "window": "2026-07-15..2026-07-21",
-      "spend_7d": 38449.41,
-      "meta_subs_7d": 6197,
-      "meta_cpa_7d": 6.2,
-      "beehiiv_cac_7d": 3.39,
-      "beehiiv_ltv_7d": 18.6,
-      "ltv_cac_7d": 5.49,
-      "beehiiv_subs_7d": 11346
+      "window": "2026-07-20..2026-07-26",
+      "spend_7d": 25152.13,
+      "meta_subs_7d": 5480,
+      "meta_cpa_7d": 4.59,
+      "beehiiv_cac_7d": 3.18,
+      "beehiiv_ltv_7d": 16.46,
+      "ltv_cac_7d": 5.18,
+      "beehiiv_subs_7d": 7910
     },
     "18-45": {
       "adset_name": "qualified_lead_best_performers_18-45",
       "adset_id": "120240614456640224",
-      "window": "2026-07-15..2026-07-21",
-      "spend_7d": 7020.12,
-      "meta_subs_7d": 796,
-      "meta_cpa_7d": 8.82,
-      "beehiiv_cac_7d": 5.93,
-      "beehiiv_ltv_7d": 20.18,
-      "ltv_cac_7d": 3.4,
-      "beehiiv_subs_7d": 1183
+      "window": "2026-07-20..2026-07-26",
+      "spend_7d": 4679.28,
+      "meta_subs_7d": 609,
+      "meta_cpa_7d": 7.68,
+      "beehiiv_cac_7d": 5.3,
+      "beehiiv_ltv_7d": 16.46,
+      "ltv_cac_7d": 3.11,
+      "beehiiv_subs_7d": 882
     }
   },
   "tests": [
@@ -60,9 +60,9 @@
         "ltv_match": "segment",
         "promoted_copy": {
           "adset_name": "qualified_broad_bestperformers_adv+",
-          "ltv": 26.27,
-          "ltv_cac": 8.39,
-          "subs_7d": 13,
+          "ltv": 27.94,
+          "ltv_cac": 8.17,
+          "subs_7d": 20,
           "match": "exact"
         }
       },
@@ -89,8 +89,13 @@
           "Nothing yet \u2014 let it run or promote. If it drifts, retest white vs black background with a tightened headline: static_istoppedstarting_psych11_resentment."
         ]
       ],
+      "resolution": {
+        "action": "promoted",
+        "date": "2026-07-23",
+        "note": "white_static_istoppedstarting already promoted to the 18-45 winners"
+      },
       "verdict": "fail",
-      "pct_over_benchmark": 15.9,
+      "pct_over_benchmark": 29.6,
       "verdict_basis": "true_cpa"
     },
     {
@@ -146,8 +151,13 @@
           "The runner-up iusedtodoomscroll had better CPA \u2014 its habit-change angle may fit 18-45 better: static_iusedtodoomscroll_psych13_helplessness."
         ]
       ],
+      "resolution": {
+        "action": "parked",
+        "date": "2026-07-23",
+        "note": "theworldwenton \u2192 retest_in_future_18-45"
+      },
       "verdict": "fail",
-      "pct_over_benchmark": 57.0,
+      "pct_over_benchmark": 75.7,
       "verdict_basis": "true_cpa"
     },
     {
@@ -203,8 +213,13 @@
           "Proof-heavy variation \u2014 keep the emotional hook, add empirical proof: static_theworldwenton_psych12_anxiety."
         ]
       ],
+      "resolution": {
+        "action": "parked",
+        "date": "2026-07-23",
+        "note": "theworldwenton \u2192 retest_in_future_Adv+"
+      },
       "verdict": "fail",
-      "pct_over_benchmark": 59.3,
+      "pct_over_benchmark": 69.8,
       "verdict_basis": "true_cpa"
     },
     {
@@ -263,8 +278,13 @@
           "Same hook, cut to testimonial proof within 5s, one CTA: video_whatnobodytells_psych10_chaos and ugc_whatnobodytells_psych3_anxiety."
         ]
       ],
+      "resolution": {
+        "action": "parked",
+        "date": "2026-07-23",
+        "note": "B1a \u2192 retest_in_future_Adv+"
+      },
       "verdict": "fail",
-      "pct_over_benchmark": 62.8,
+      "pct_over_benchmark": 73.6,
       "verdict_basis": "true_cpa"
     },
     {
@@ -323,8 +343,13 @@
           "Same recut with a punchier first 3 seconds for 18-45: video_whatnobodytells_psych10_anxiety."
         ]
       ],
+      "resolution": {
+        "action": "parked",
+        "date": "2026-07-23",
+        "note": "B1a \u2192 retest_in_future_18-45"
+      },
       "verdict": "fail",
-      "pct_over_benchmark": 41.1,
+      "pct_over_benchmark": 57.9,
       "verdict_basis": "true_cpa"
     },
     {
@@ -350,6 +375,11 @@
         "promoted_copy": null
       },
       "note": "~25 subs since Jul 17 launch; needs ~50 to leave learning.",
+      "resolution": {
+        "action": "parked",
+        "date": "2026-07-23",
+        "note": "ocean2 \u2192 retest_in_future_18-45 (early park, Nicole-directed backfill)"
+      },
       "verdict": null
     },
     {
@@ -375,20 +405,100 @@
         "promoted_copy": null
       },
       "note": "Crossed ~50 subs Jul 22; judgeable Jul 24 (true CPA will be computed then).",
+      "resolution": {
+        "action": "parked",
+        "date": "2026-07-23",
+        "note": "ocean2 \u2192 retest_in_future_Adv+ (early park, Nicole-directed backfill)"
+      },
       "verdict": null
     },
     {
-      "test": "nh_static_imagetest_july20_adv+",
-      "adset_id": "120249344704260224",
+      "test": "test_static_variations_istoppedstarting_psych11_resentment_adv+",
+      "adset_id": "120249394832650224",
       "audience": "adv+",
-      "launched": "2026-07-21",
+      "launched": "2026-07-23",
+      "learning_exit": "2026-07-25",
+      "judgeable_from": "2026-07-27",
+      "status": "judgeable",
+      "winner": {
+        "ad_name": "wildflower_static_istoppedstarting_psych11_resentment",
+        "ad_id": "120249394832660224",
+        "creative_id": "2188022211814458",
+        "spend": 506.2,
+        "meta_cpa": 6.41,
+        "meta_subs": 79,
+        "beehiiv_segment": "seg_3ecf6a56-0234-4129-8b4e-3a23240e7013",
+        "beehiiv_subs_lifetime": 116,
+        "segment_metrics": {
+          "open_rate": 0.6161,
+          "cto": 0.413,
+          "unsub_rate": 0.034,
+          "source": "seg_3ecf6a56 metrics 2026-07-27"
+        },
+        "true_cpa": 4.36,
+        "beehiiv_ltv_7d": 42.41,
+        "beehiiv_ltv_cac_7d": 9.73,
+        "beehiiv_subs_7d": 116,
+        "ltv_match": "segment",
+        "promoted_copy": {
+          "adset_name": "qualified_broad_bestperformers_adv+",
+          "ltv": 27.94,
+          "ltv_cac": 8.17,
+          "subs_7d": 20,
+          "match": "fuzzy"
+        }
+      },
+      "note": "Background-variations test of the promoted notesapp winner. Wildflower is Meta's clear pick (64 of 111 subs); rainy is runner-up at $6.83.",
+      "qa": [
+        [
+          "Why is it flagged?",
+          "Judgeable today (crossed ~50 subs Jul 25 + 48h). Winner wildflower's cost sits above the adv+ winning set's benchmark \u2014 the bar is the toughest in the account."
+        ],
+        [
+          "What's working?",
+          "The istoppedstarting copy keeps converting on new backgrounds: 111 subs in 4 days across 5 arms. Meta concentrated budget on wildflower fast (78% of test spend)."
+        ],
+        [
+          "What's not working?",
+          "Cost vs the adv+ bar. The parent creative already runs in the winning sets, so this test mostly tells us which BACKGROUND to keep in rotation."
+        ],
+        [
+          "Approve or deny?",
+          "Genuine judgment call: it misses the cost bar by 37%, but its own subs are exceptional \u2014 ~$9.7 of LTV per $1 vs the set's ~$5.2 (caveat: 4-day-old subscribers always engage hot, so some of that premium will decay). Promote if you trust the engagement; park if you want the cost bar respected \u2014 the copy is already promoted either way."
+        ],
+        [
+          "What would I retest?",
+          "Nothing new \u2014 this IS the fatigue-refresh test. If parked, wildflower becomes the first-choice background swap when static_testimonial or istoppedstarting tires."
+        ]
+      ],
+      "verdict": "fail",
+      "pct_over_benchmark": 37.1,
+      "verdict_basis": "true_cpa"
+    },
+    {
+      "test": "test_hookvariations_jul25 (both audiences)",
+      "adset_id": "120249421484490224",
+      "audience": "adv+",
+      "launched": "2026-07-25",
       "learning_exit": null,
       "judgeable_from": null,
       "status": "paused_externally",
       "winner": null,
-      "note": "Paused in Meta on Jul 22 while still learning (13 subs). Optimizes to Website subscriptions, not the qualified-lead event.",
+      "note": "Scheduled for Jul 25 12:01am but found PAUSED with $0 spend on Jul 27 \u2014 someone paused it before launch. Needs Nicole: reschedule or leave off.",
+      "verdict": null
+    },
+    {
+      "test": "nh_static_imagetest_july23_adv+",
+      "adset_id": "120249396123800224",
+      "audience": "adv+",
+      "launched": "2026-07-23",
+      "learning_exit": null,
+      "judgeable_from": null,
+      "status": "learning",
+      "winner": null,
+      "note": "Optimizes to Website subscriptions (not the qualified-lead event) \u2014 outside the verdict system; ~$680 spent so far.",
       "verdict": null
     }
   ],
-  "flagged_count": 5
+  "flagged_count": 6
 }
