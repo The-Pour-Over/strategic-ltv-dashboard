@@ -471,6 +471,11 @@
           "Nothing new \u2014 this IS the fatigue-refresh test. If parked, wildflower becomes the first-choice background swap when static_testimonial or istoppedstarting tires."
         ]
       ],
+      "resolution": {
+        "action": "parked",
+        "date": "2026-07-29",
+        "note": "wildflower \u2192 retest_in_future_Adv+ (parked copy 120249509784780224; original ad + test ad set paused \u2014 executed via Graph API after connector outage)"
+      },
       "verdict": "fail",
       "pct_over_benchmark": 39.9,
       "verdict_basis": "true_cpa"
