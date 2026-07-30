@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Pour Over — Sign Up</title>
+<link rel="icon" href="logo.png">
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --ink: #111110;
+    --muted: #74716C;
+    --line: #E5E3DF;
+    --accent: #F2827F;
+    --accent-soft: #FCE0DF;
+    --sans: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    flex-direction: column;
+  }
+
+  body { border-top: 6px solid var(--accent); }
+  .lockup { height: 52px; width: 52px; display: block; margin-bottom: 2.25rem; }
+  .coral { color: var(--accent); }
+
+  .stage {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(2rem, 6vh, 4rem) clamp(1.25rem, 4vw, 3rem);
+  }
+  .step { width: 100%; max-width: 46rem; }
+
+  .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  h1 {
+    font-size: clamp(3rem, 13vw, 5.8rem);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    margin: 1.25rem 0 0;
+  }
+  .sub {
+    margin-top: 1.75rem;
+    font-size: clamp(0.95rem, 2vw, 1.15rem);
+    color: var(--muted);
+    max-width: 46ch;
+  }
+  .sub strong { color: var(--ink); font-weight: 600; }
+
+  form { margin-top: 3rem; max-width: 28rem; }
+  input[type=email] {
+    display: block;
+    width: 100%;
+    font-family: var(--sans);
+    font-size: clamp(1.05rem, 4vw, 1.25rem);
+    padding: 1rem 1.15rem;
+    border: 1.5px solid var(--ink);
+    border-radius: 10px;
+    outline: none;
+    color: var(--ink);
+    background: var(--bg);
+    transition: border-color 0.15s;
+  }
+  input[type=email]:focus { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+  input[type=email]::placeholder { color: var(--muted); opacity: 0.7; }
+
+  .btn {
+    display: inline-block;
+    border: 0;
+    cursor: pointer;
+    background: var(--accent);
+    color: #111110;
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 1.1rem 2.6rem;
+    border-radius: 999px;
+    white-space: nowrap;
+    -webkit-tap-highlight-color: transparent;
+  }
+  form .btn { margin-top: 1.5rem; width: 100%; }
+  .btn:hover { opacity: 0.85; }
+  .btn:active { transform: scale(0.98); }
+  .btn:disabled { opacity: 0.55; cursor: default; }
+
+  @media (max-width: 560px) {
+    .choices { flex-direction: column; }
+    .choices .btn { width: 100%; }
+  }
+  .btn.ghost {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--ink);
+  }
+  .btn.ink { background: #111110; color: #FFFFFF; }
+
+  .err {
+    display: none;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #B3261E;
+  }
+
+  /* coral band steps */
+  body.on-band .eyebrow { color: #111110; }
+  body.on-band .sub {
+    color: #111110;
+    font-size: clamp(1.1rem, 2.6vw, 1.35rem);
+  }
+  body.on-band .sub strong { color: #111110; }
+  body.on-band h1 .flip { color: #FFFFFF; }
+
+  .choices { margin-top: 2.5rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .rule {
+    width: 3.5rem; height: 3px;
+    background: var(--accent);
+    margin-top: 2rem;
+  }
+  .band .rule { background: #111110; }
+
+  footer {
+    padding: 1.4rem clamp(1.25rem, 4vw, 3rem);
+    display: flex;
+    justify-content: center;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    user-select: none;
+  }
+  body.on-band { background: var(--accent); border-top-color: #111110; }
+  body.on-band footer { opacity: 0; }
+
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+
+<div class="stage">
+
+  <!-- STEP 1 — TPO signup -->
+  <div class="step" id="step1">
+    <img class="lockup" src="logo.png" alt="The Pour Over">
+    <h1>Same news.<br><span class="coral">Different headspace.</span></h1>
+    <p class="sub">Get the day’s biggest news in <strong>5 minutes</strong>, paired with biblical reminders to keep you focused on Christ.</p>
+    <form id="tpoForm" autocomplete="off">
+      <input type="email" id="email" placeholder="jesus@nazarethcarpentry.com" required autocomplete="off" autocapitalize="off" spellcheck="false">
+      <button class="btn" id="tpoBtn" type="submit">Try it</button>
+    </form>
+    <p class="err" id="err1">Hmm, that didn’t go through. Double-check the email and try again.</p>
+  </div>
+
+  <!-- STEP 2 — Decaf yes/no (coral band) -->
+  <div class="step stage-inner hidden" id="step2">
+    <div class="eyebrow">You’re in · One more thing</div>
+    <h1>Kids at home?<br><span class="flip">Meet Decaf.</span></h1>
+    <p class="sub"><strong>The Pour Over for families.</strong> Same news, made for kids. One tap, same email.</p>
+    <div class="choices">
+      <button class="btn ink" id="yesBtn">Yes — sign me up</button>
+      <button class="btn ghost" id="noBtn">No thanks</button>
+    </div>
+    <p class="err" id="err2">Couldn’t reach the signup service — try the button once more.</p>
+  </div>
+
+  <!-- STEP 3 — done -->
+  <div class="step stage-inner hidden" id="step3">
+    <div class="eyebrow" id="doneEyebrow">All set</div>
+    <h1 id="doneH1">See you<br><span class="flip">in your inbox.</span></h1>
+    <p class="sub" id="doneSub">Check your inbox to confirm. Thanks for stopping by!</p>
+    <div class="rule"></div>
+  </div>
+
+</div>
+
+<footer>
+  <span>1,500,000 already reading</span>
+</footer>
+
+<!-- Hidden native form: submits to beehiiv inside an invisible iframe, so the
+     page never navigates. Native form posts can't be blocked by CORS. -->
+<iframe name="submitSink" style="display:none" title="hidden"></iframe>
+<form id="postForm" method="post" action="https://subscribe-forms.beehiiv.com/api/submit" target="submitSink" style="display:none">
+  <input type="hidden" name="form_id" id="pfFormId">
+  <input type="hidden" name="form[email]" id="pfEmail">
+  <input type="hidden" name="utm_source" value="conference">
+  <input type="hidden" name="utm_medium" value="MOM-CON26">
+</form>
+
+<script>
+  const $ = id => document.getElementById(id);
+  let email = '';
+
+  function show(step, band) {
+    ['step1','step2','step3'].forEach(s => $(s).classList.add('hidden'));
+    $(step).classList.remove('hidden');
+    document.body.classList.toggle('on-band', !!band);
+  }
+
+  const FORMS = {
+    tpo:   '5e3f33d8-2a26-456c-8fa4-042324f4acd8', // "Conference Signup - TPO"
+    decaf: 'a0f41371-dadc-45ec-bc8e-f01ff21e644d', // "Conference Signup - Decaf"
+  };
+  function subscribe(pub, addr) {
+    $('pfFormId').value = FORMS[pub];
+    $('pfEmail').value = addr;
+    $('postForm').submit();
+  }
+
+  $('tpoForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const addr = $('email').value.trim();
+    if (!addr) return;
+    $('tpoBtn').disabled = true; $('tpoBtn').textContent = 'Signing up…';
+    subscribe('tpo', addr);
+    email = addr;
+    setTimeout(() => show('step2', true), 700);
+  });
+
+  $('yesBtn').addEventListener('click', () => {
+    $('yesBtn').disabled = true; $('yesBtn').textContent = 'Signing up…';
+    subscribe('decaf', email);
+    setTimeout(() => {
+      $('doneEyebrow').textContent = 'You’re in — both of them';
+      $('doneH1').innerHTML = 'Two newsletters.<br><span class="flip">Zero anxiety.</span>';
+      $('doneSub').innerHTML = 'Both are headed to your inbox. Check your email to confirm.';
+      show('step3', true);
+    }, 600);
+  });
+
+  $('noBtn').addEventListener('click', () => {
+    $('doneEyebrow').textContent = 'All set';
+    $('doneH1').innerHTML = 'See you<br><span class="flip">in your inbox.</span>';
+    $('doneSub').innerHTML = 'Check your inbox to confirm. Thanks for stopping by!';
+    show('step3', true);
+  });
+
+  $('email').focus();
+</script>
+
+</body>
+</html>
