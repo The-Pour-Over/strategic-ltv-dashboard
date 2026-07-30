@@ -505,5 +505,32 @@
       "verdict": null
     }
   ],
+  "lessons": [
+    {
+      "lesson": "Damaging-admission hooks (psych 11) are the only recent test WIN \u2014 identity call-out + honest flaw beats the benchmark. Write more in this lane.",
+      "examples": [
+        "white_static_istoppedstarting_psych11_resentment (promoted, closest to bench of the whole batch)"
+      ]
+    },
+    {
+      "lesson": "Re-skinning a winner doesn't beat the winner \u2014 background/format variations of promoted ads all parked. Test new CONCEPTS, not new coats of paint.",
+      "examples": [
+        "wildflower_static_istoppedstarting (+40% vs bench)",
+        "test_motiongraphic_youseemless_ocean2 (parked early)"
+      ]
+    },
+    {
+      "lesson": "Video life-change testimonials pull HIGH-QUALITY subscribers (4.9x LTV) but cost 58\u201374% over benchmark \u2014 right angle, wrong cost. Worth retrying as cheap statics before giving up on the angle.",
+      "examples": [
+        "B1a_test_video_life_change_newsletter (adv+ +74%, 18-45 +58%)"
+      ]
+    },
+    {
+      "lesson": "News-empathy without an identity call-out misses big in BOTH audiences \u2014 the 'world went on' framing needs a who-this-is-for hook to clear bench.",
+      "examples": [
+        "static_theworldwenton_psych3_anxiety (+70\u201376% vs bench in both audiences)"
+      ]
+    }
+  ],
   "flagged_count": 6
 }
