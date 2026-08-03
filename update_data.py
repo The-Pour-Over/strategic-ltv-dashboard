@@ -92,19 +92,45 @@ def recalculate_segment(seg_id):
     return False
 
 def fetch_segment_stats(seg_id):
+    # Segment engagement stats are only returned when expand[]=stats is
+    # passed; without it every rate silently defaults to 0 (August 2026 run).
     r = requests.get(f"{BASE}/publications/{PUB_ID}/segments/{seg_id}",
-                     headers=HEADERS)
+                     headers=HEADERS,
+                     params={"expand[]": "stats"})
     r.raise_for_status()
     d = r.json().get("data", {})
-    stats = d.get("stats", d)
+    stats = d.get("stats") or d.get("metrics") or {}
+
+    def pick(*names, default=0):
+        # Field names differ between the documented public API ("stats":
+        # clickthrough_rate, unsubscribed_rate, percentage_*) and the app
+        # API ("metrics": click_through_rate_verified, pct_*); accept both.
+        for n in names:
+            v = stats.get(n)
+            if v not in (None, ""):
+                return v
+        return default
+
+    # API returns percentages (49.51); the dashboard stores fractions (0.4951).
+    def frac(*names):
+        return round((pick(*names) or 0) / 100, 4)
+
+    subs = d.get("total_results", pick("total_subscribers")) or 0
+    total_refs = pick("total_referrals")
+    referral_rate = frac("percentage_subscribers_with_referrals", "pct_referring")
+    refs_per_referrer = pick("average_referrals_per_referrer", default=None)
+    if refs_per_referrer is None:
+        referrers = subs * referral_rate
+        refs_per_referrer = (total_refs / referrers) if referrers else 0
     return {
-        "subs":           d.get("total_results", stats.get("subscriber_count", 0)) or 0,
-        "openRate":       round(stats.get("open_rate", 0) or 0, 4),
-        "CTR":            round(stats.get("click_through_rate", 0) or 0, 4),
-        "unsubRate":      round(stats.get("pct_unsubscribed", 0) or 0, 4),
-        "premiumRate":    round(stats.get("pct_premium", 0) or 0, 4),
-        "referralRate":   round(stats.get("pct_referring", 0) or 0, 4),
-        "refsPerReferrer": round(stats.get("average_referrals_per_referrer", 0) or 0, 2),
+        "subs":           subs,
+        "openRate":       frac("open_rate"),
+        "CTR":            frac("click_through_rate_verified", "clickthrough_rate",
+                               "click_through_rate"),
+        "unsubRate":      frac("unsubscribed_rate", "pct_unsubscribed"),
+        "premiumRate":    frac("percentage_premium_subscribers", "pct_premium"),
+        "referralRate":   referral_rate,
+        "refsPerReferrer": round(refs_per_referrer or 0, 2),
     }
 
 def build_grid(found):
@@ -171,6 +197,17 @@ if __name__ == "__main__":
         sys.exit("ABORT: every segment returned 0 subscribers — data looks wrong; "
                  "refusing to overwrite the dashboard. (This guard exists because "
                  "the July 2026 run silently zeroed the page.)")
+
+    # Guard against the August 2026 failure mode: subs present but every rate
+    # zero (stats not expanded / field names drifted). A populated segment with
+    # a genuinely 0% open rate is implausible at this list's scale.
+    populated = [cell for row in grid for cell in row if cell and cell["subs"] > 0]
+    rateless = [c for c in populated if c["openRate"] == 0]
+    if populated and len(rateless) > len(populated) / 2:
+        sys.exit(f"ABORT: {len(rateless)}/{len(populated)} populated segments "
+                 "returned all-zero rates — stats are missing or field names "
+                 "changed; refusing to overwrite the dashboard. (August 2026 "
+                 "published zero rates because expand[]=stats was not passed.)")
 
     print("Building JS data...")
     new_js = build_js(grid)
