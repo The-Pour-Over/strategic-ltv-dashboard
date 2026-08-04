@@ -163,9 +163,32 @@ def build_js(grid):
     lines.append("];")
     return "\n".join(lines)
 
+def archive_outgoing_pull(html, new_pull_date):
+    """Append the current (about-to-be-replaced) timeWindows data to the
+    archivedPulls array so past pulls remain as dated rows in the Total LTV
+    history table. Idempotent: skips if that pull date is already archived."""
+    from datetime import datetime
+    date_m = re.search(r"Data pulled ([A-Za-z]+ \d+, \d{4})", html)
+    tw_m = re.search(r"const timeWindows = \[(.*?)\];", html, flags=re.DOTALL)
+    ap_m = re.search(r"(const archivedPulls = \[.*?)(\n\];)", html, flags=re.DOTALL)
+    if not (date_m and tw_m and ap_m):
+        print("  NOTE: archivedPulls block or pull date not found; skipping archive")
+        return html
+    if date_m.group(1) == new_pull_date:
+        print("  Outgoing pull has the same date as this run (re-run); skipping archive")
+        return html
+    label = datetime.strptime(date_m.group(1), "%B %d, %Y").strftime("%b %-d, %Y")
+    if f'label: "{label}"' in ap_m.group(1):
+        print(f"  Archive for {label} already present; skipping")
+        return html
+    entry = f'  {{ label: "{label}", windows: [{tw_m.group(1).rstrip()}\n  ] }},\n'
+    print(f"  Archiving outgoing pull as '{label}'")
+    return html[:ap_m.end(1)] + "\n" + entry.rstrip("\n") + html[ap_m.end(1):]
+
 def update_html(new_js, pull_date):
     with open("index.html", "r") as f:
         html = f.read()
+    html = archive_outgoing_pull(html, pull_date)
     html = re.sub(r"const timeWindows = \[.*?\];", new_js, html, flags=re.DOTALL)
     html = re.sub(r"Data pulled [A-Za-z]+ \d+, \d{4}", f"Data pulled {pull_date}", html)
     with open("index.html", "w") as f:
