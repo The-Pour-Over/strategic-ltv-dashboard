@@ -1,0 +1,18 @@
+{
+  "as_of": "2026-08-07",
+  "note": "Welcome email = New Nurture Journey automations (Anxiety + Chaos = ~95% of welcome volume). 'click_rate' = PLAIN click rate = unique clicks / delivered (the metric we track); 'cto' = click-to-open = clicks / opens. Windows are cumulative (7d subset of 4wk subset of 3mo). Source: Beehiiv automation stats via MCP (the public REST API has no automation-stats endpoint), refreshed in-session; weekly[] accumulates one point per weekly refresh.",
+  "windows": {
+    "last_3_months": { "open_rate": 74.5, "click_rate": 34.2, "cto": 45.9 },
+    "last_4_weeks":  { "open_rate": 74.0, "click_rate": 32.5, "cto": 43.9 },
+    "last_7_days":   { "open_rate": 70.7, "click_rate": 29.3, "cto": 41.5 }
+  },
+  "totals": {
+    "all_time_delivered": 168743,
+    "all_time_unique_clicks": 57630,
+    "all_time_total_clicks": 67809
+  },
+  "weekly": [
+    { "week_ending": "2026-08-03", "click_rate": 29.5, "cto": 34.7, "open_rate": 84.9, "unique_clicks": null, "delivered": null, "note": "prior snapshot; click volume not captured; open/CTO basis differs slightly from current pull" },
+    { "week_ending": "2026-08-07", "click_rate": 29.3, "cto": 41.5, "open_rate": 70.7, "unique_clicks": 4361, "delivered": 14873 }
+  ]
+}
