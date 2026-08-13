@@ -1378,5 +1378,28 @@
       "subs": 14836,
       "total_spend": 53256.63
     }
+  },
+  {
+    "date": "2026-08-13",
+    "cohort_7d": {
+      "open_rate": 55.81,
+      "cto_rate": 22.72,
+      "unsub_rate": 4.22,
+      "cpa": 4.05,
+      "ltv_per_sub": 20.66,
+      "ltv_cac_ratio": 5.1,
+      "subs": 22079,
+      "total_spend": 89391.77
+    },
+    "cohort_21d": {
+      "open_rate": 52.6,
+      "cto_rate": 10.54,
+      "unsub_rate": 11.99,
+      "cpa": 3.51,
+      "ltv_per_sub": 8.28,
+      "ltv_cac_ratio": 2.36,
+      "subs": 14501,
+      "total_spend": 50970.31
+    }
   }
 ]
