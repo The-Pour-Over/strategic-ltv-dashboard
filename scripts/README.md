@@ -64,3 +64,30 @@ python3 scripts/test_ad_truecpa.py
 python3 scripts/test_verdicts.py           # after a flags refresh
 git add action-center/data decisions-inbox.json && git commit && git push
 ```
+
+## Creative generation — real footage/photos (on-demand)
+
+Build finished ad creatives from **real, commercially-licensed** backgrounds
+(Pexels — free API, no attribution) plus our text overlay. Replaces AI-generated
+backgrounds (Matt 2026-08-13: the AI look reads as fake). **Run with `python3.12`**
+(system python3.9 fails Pexels/Meta SSL).
+
+| Script | Command | Creds | What it does |
+|---|---|---|---|
+| `pexels_fetch.py` | `python3.12 scripts/pexels_fetch.py --type video\|photo --query "<theme>" --orientation portrait\|square [--candidates N] [--out f]` | `~/.secrets/pexels.env` | Search Pexels, list N candidates or download the best portrait/square match. |
+| `build_creative.py` | `python3.12 scripts/build_creative.py --spec spec.json` | Meta not needed | Render a static JPG or motion MP4 from a spec: real bg + text overlay (Chrome frames → ffmpeg). |
+
+**Two proven recipes** (set via `font_style` + `scrim`):
+- `handwritten` + `warm_veil` — Shadows-Into-Light dark copy on a warm photo (the sunrise/lake testimonial statics; fonts in `action-center/fonts/`).
+- `boldsans` + `dark` — heavy white sans over a dark scrim on real footage (the snow-city motion winner).
+
+**Spec** (JSON): `format` (`9:16`/`1:1`/`4:5`), `media` (`motion`/`static`),
+`font_style`, `scrim`, `background` (`{type:"video"|"image", path, start?}`),
+`stanzas[]` (hook first), `hook_instant` (**always true** — first stanza on-screen
+at t=0), `duration`, `fps`, `out`. Motion+video composites text over the clip;
+motion+image ken-burns the still; static bakes one frame.
+
+**`/recreate-winner <ad_name>`** (`.claude/skills/recreate-winner/`) chains it all:
+read the winner from `creative_metrics.json` → read its creative off the Meta
+thumbnail → source a real Pexels background for the theme → `build_creative.py` →
+QC. Output is a file for review; **never touches Meta**.
