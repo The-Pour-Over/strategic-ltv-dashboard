@@ -1,0 +1,122 @@
+[
+  {
+    "id": "m1",
+    "gap": "#9 Selective filtering \u00d7 chaos (proven winner)",
+    "media": "motion",
+    "format": "9:16",
+    "font_style": "boldsans",
+    "scrim": "dark",
+    "pexels": {
+      "type": "video",
+      "query": "snowing city night",
+      "orientation": "portrait"
+    },
+    "duration": 10,
+    "fps": 15,
+    "hook_instant": true,
+    "stanzas": [
+      "Most Christians are getting their worldview from CNN, Fox, or their Instagram feed.",
+      "There's a better way.",
+      "The Pour Over delivers the biggest news stories in 5 minutes, with Scripture to keep you grounded in truth.",
+      "Tap to join 1,500,000 Christians for free."
+    ],
+    "music": {
+      "path": "creative-studio/music/peaceful_006.mp3",
+      "gain_db": 0
+    }
+  },
+  {
+    "id": "m2",
+    "gap": "#17 Cognitive fluency \u00d7 anxiety",
+    "media": "motion",
+    "format": "9:16",
+    "font_style": "boldsans",
+    "scrim": "dark",
+    "pexels": {
+      "type": "video",
+      "query": "rain window quiet morning",
+      "orientation": "portrait"
+    },
+    "duration": 10,
+    "fps": 15,
+    "hook_instant": true,
+    "stanzas": [
+      "The news used to make me anxious.",
+      "Every morning. Scroll, scroll, scroll. Tight chest before 8 a.m.",
+      "Then I found The Pour Over. Same news. Christ-first. Short and calm.",
+      "Now I read it and I'm okay. Join 1,500,000 Christians, free."
+    ],
+    "music": {
+      "path": "creative-studio/music/peaceful_002.mp3",
+      "gain_db": 0
+    }
+  },
+  {
+    "id": "m3",
+    "gap": "#5 Authority \u00d7 chaos",
+    "media": "motion",
+    "format": "9:16",
+    "font_style": "boldsans",
+    "scrim": "dark",
+    "pexels": {
+      "type": "video",
+      "query": "aerial city lights night",
+      "orientation": "portrait"
+    },
+    "duration": 10,
+    "fps": 15,
+    "hook_instant": true,
+    "stanzas": [
+      "1,500,000 Christians start their chaotic mornings here.",
+      "The news is chaos \u2014 endless takes, all fighting for your fear.",
+      "The Pour Over cuts through it: the day's real news, one Christ-first email, checked by a full editorial team.",
+      "The facts and a steady heart. In five minutes, free."
+    ],
+    "music": {
+      "path": "creative-studio/music/peaceful_003.mp3",
+      "gain_db": -8
+    }
+  },
+  {
+    "id": "s1",
+    "gap": "#17 Cognitive fluency \u00d7 chaos",
+    "media": "static",
+    "format": "1:1",
+    "font_style": "handwritten",
+    "scrim": "warm_veil",
+    "pexels": {
+      "type": "photo",
+      "query": "golden sunrise over calm lake water",
+      "orientation": "square"
+    },
+    "hook_instant": false,
+    "stanzas": [
+      "Mornings used to feel like chaos.",
+      "Ten tabs. Loud headlines. My head was a mess before work.",
+      "Then I found The Pour Over. One email. Same news, Christ-first and calm.",
+      "Now my mornings feel quiet again.",
+      "It's free and takes five minutes. Join 1,500,000 Christians."
+    ]
+  },
+  {
+    "id": "s2",
+    "gap": "#9 Selective filtering \u00d7 inadequacy",
+    "media": "static",
+    "format": "1:1",
+    "font_style": "handwritten",
+    "scrim": "warm_veil",
+    "pexels": {
+      "type": "photo",
+      "query": "sunrise over quiet countryside",
+      "orientation": "square"
+    },
+    "hook_instant": false,
+    "stanzas": [
+      "Most Christians feel behind on the news.",
+      "You don't have to.",
+      "The Pour Over gives you the day's biggest stories in five minutes, Christ-first.",
+      "No spin. No overwhelm. Just grounded.",
+      "It's free. Join 1,500,000 Christians."
+    ]
+  }
+]

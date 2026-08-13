@@ -5,3 +5,7 @@ key.txt
 dashboard-pass.txt
 .vari-logs/
 __pycache__/
+# creative-studio scratch (regenerated on demand; state is machine-local)
+creative-studio/generated/
+creative-studio/server.log
+creative-studio/.meta_state.json

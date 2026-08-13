@@ -53,13 +53,16 @@ def esc(s):
 
 def font_css(style):
     if style == "handwritten":
+        # near-black ink, heavy white glow, larger sizes — must stay legible on
+        # real stock photos, not just pale skies (Matt 2026-08-13)
         return f"""
       @font-face {{ font-family:"AdHand"; src:url("{FONTS}/ShadowsIntoLightTwo.woff2"); }}
       @font-face {{ font-family:"AdHand"; src:url("{FONTS}/Schoolbell.woff2"); unicode-range:U+49; }}
-      .copy {{ font-family:"AdHand",cursive; color:#3d3428;
-               text-shadow:0 0 18px rgba(255,248,235,.55); }}
-      .hook {{ font-size:54px; line-height:1.28; margin-bottom:36px; }}
-      .stanza {{ font-size:44px; line-height:1.42; margin-bottom:32px; }}
+      .copy {{ font-family:"AdHand",cursive; color:#241d12;
+               text-shadow:0 0 10px rgba(255,250,240,.95), 0 0 22px rgba(255,250,240,.85),
+                           0 0 40px rgba(255,250,240,.6); }}
+      .hook {{ font-size:62px; line-height:1.26; margin-bottom:38px; }}
+      .stanza {{ font-size:50px; line-height:1.4; margin-bottom:34px; }}
       .stanza:last-child {{ margin-bottom:0; }}"""
     return """
       .copy { font-family:"Helvetica Neue",Arial,sans-serif; font-weight:800; color:#fff;
@@ -70,7 +73,9 @@ def font_css(style):
 
 def scrim_css(kind):
     if kind == "warm_veil":
-        return ".scrim{position:absolute;inset:0;background:rgba(255,248,235,.30);}"
+        # .42 (was .30): strong enough that dark handwritten copy stays legible
+        # even on busy/dark stock photos, not just pale sunrise shots
+        return ".scrim{position:absolute;inset:0;background:rgba(255,248,235,.42);}"
     if kind == "dark":
         return (".scrim{position:absolute;inset:0;background:linear-gradient(180deg,"
                 "rgba(5,7,13,.42) 0%,rgba(5,7,13,.30) 24%,rgba(5,7,13,.34) 50%,"
@@ -141,6 +146,23 @@ def render_frame(html_path, W, H, t, out_png, transparent):
     subprocess.run(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
 
+def add_music(video_path, music, dur, out):
+    """Mux a music bed onto a finished video (video stream copied, so it's fast).
+    music: {"path": mp3, "gain_db": 0, "start": 0}. Fades in 0.6s, out over the
+    last 1.2s. CC0 library lives in creative-studio/music/ (see its LICENSE.md)."""
+    mstart = float(music.get("start", 0))
+    gain = float(music.get("gain_db", 0))
+    af = (f"atrim={mstart}:{mstart + dur},asetpts=PTS-STARTPTS,"
+          f"afade=t=in:st=0:d=0.6,afade=t=out:st={dur - 1.2}:d=1.2,volume={gain}dB")
+    cmd = ["ffmpeg", "-y", "-i", video_path, "-i", os.path.abspath(music["path"]),
+           "-filter_complex", f"[1:a]{af}[aud]", "-map", "0:v", "-map", "[aud]",
+           "-c:v", "copy", "-c:a", "aac", "-b:a", "128k", "-t", str(dur),
+           "-movflags", "+faststart", out]
+    r = subprocess.run(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, text=True)
+    if r.returncode != 0:
+        sys.exit("music mux failed:\n" + "\n".join(r.stderr.splitlines()[-4:]))
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--spec", required=True)
@@ -159,7 +181,9 @@ def main():
         hp = os.path.join(tmp, "s.html")
         open(hp, "w").write(html(spec, W, H, baked_bg=os.path.abspath(bg["path"])))
         png = os.path.join(tmp, "s.png")
-        render_frame(hp, W, H, 0, png, transparent=False)
+        # freeze PAST the reveal animations (t > duration) so every stanza is at
+        # opacity 1 — rendering at t=0 leaves all text invisible
+        render_frame(hp, W, H, spec.get("duration", 6) + 1, png, transparent=False)
         subprocess.run(["sips", "-s", "format", "jpeg", "-s", "formatOptions", "82", png, "--out", out],
                        stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         print(f"built static {out}")
@@ -167,29 +191,57 @@ def main():
 
     # ---- MOTION ----
     dur, fps = spec.get("duration", 6), spec.get("fps", 15)
-    N = dur * fps
     over_video = bg.get("type") == "video"
+    animate = spec.get("animate", False)  # full per-frame reveal; default = fast static overlay
+    music = spec.get("music")             # optional {"path", "gain_db", "start"} — muxed after render
+    video_out = os.path.join(tmp, "noaudio.mp4") if music else out
     hp = os.path.join(tmp, "m.html")
     open(hp, "w").write(html(spec, W, H, baked_bg=None if over_video else os.path.abspath(bg["path"])))
+
+    # FAST PATH (default): full text + scrim persist for the ENTIRE video — one
+    # transparent overlay render composited over the real footage (Matt 2026-08-13:
+    # no pop-up text, everything readable from frame 0 to end). ~1 Chrome render.
+    if over_video and not animate:
+        st = float(bg.get("start", 0))
+        png = os.path.join(tmp, "ov.png")
+        render_frame(hp, W, H, dur + 1, png, transparent=True)  # t>dur => all stanzas visible
+        fc = (f"[0:v]trim={st}:{st + dur},setpts=PTS-STARTPTS,"
+              f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps=30[bg];"
+              f"[1:v]format=rgba[tx];[bg][tx]overlay=0:0,format=yuv420p[out]")
+        cmd = ["ffmpeg", "-y", "-stream_loop", "-1", "-i", os.path.abspath(bg["path"]),
+               "-loop", "1", "-i", png, "-filter_complex", fc, "-map", "[out]",
+               "-t", str(dur), "-c:v", "libx264", "-preset", "veryfast", "-crf", "21",
+               "-movflags", "+faststart", video_out]
+        r = subprocess.run(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, text=True)
+        if r.returncode != 0:
+            sys.exit("ffmpeg failed:\n" + "\n".join(r.stderr.splitlines()[-4:]))
+        if music:
+            add_music(video_out, music, dur, out)
+        print(f"built motion {out}")
+        return
+
+    # FULL PATH: per-frame reveal (animated text) or image ken-burns
+    N = dur * fps
     for i in range(N):
         render_frame(hp, W, H, i / fps, os.path.join(tmp, f"f_{i:04d}.png"), transparent=over_video)
-
     if over_video:
-        st = float(bg.get("start", 0))  # start offset into the clip (skip dark fade-in)
+        st = float(bg.get("start", 0))
         fc = (f"[0:v]trim={st}:{st + dur},setpts=PTS-STARTPTS,"
               f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps=30[bg];"
               f"[1:v]fps=30,format=rgba[tx];[bg][tx]overlay=0:0:format=auto,format=yuv420p[out]")
         cmd = ["ffmpeg", "-y", "-i", os.path.abspath(bg["path"]),
                "-framerate", str(fps), "-i", os.path.join(tmp, "f_%04d.png"),
                "-filter_complex", fc, "-map", "[out]", "-t", str(dur),
-               "-c:v", "libx264", "-preset", "slow", "-crf", "20", "-movflags", "+faststart", out]
+               "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-movflags", "+faststart", video_out]
     else:
         cmd = ["ffmpeg", "-y", "-framerate", str(fps), "-i", os.path.join(tmp, "f_%04d.png"),
-               "-c:v", "libx264", "-preset", "slow", "-crf", "19", "-pix_fmt", "yuv420p",
-               "-vf", f"scale={W}:{H}:flags=lanczos", "-movflags", "+faststart", out]
+               "-c:v", "libx264", "-preset", "veryfast", "-crf", "19", "-pix_fmt", "yuv420p",
+               "-vf", f"scale={W}:{H}:flags=lanczos", "-movflags", "+faststart", video_out]
     r = subprocess.run(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, text=True)
     if r.returncode != 0:
         sys.exit("ffmpeg failed:\n" + "\n".join(r.stderr.splitlines()[-4:]))
+    if music:
+        add_music(video_out, music, dur, out)
     print(f"built motion {out}")
 
 

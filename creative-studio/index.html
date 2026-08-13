@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TPO Creative Studio</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--cream:#faf8f5;--ink:#3d3428;--coral:#f87171;--green:#16a34a;--green2:#15803d;
+        --card:#fff;--line:#eadfd3;--muted:#8a7d6b;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--cream);color:var(--ink);font-family:-apple-system,"Segoe UI",Roboto,sans-serif;
+       line-height:1.5;padding:32px 20px 80px}
+  .wrap{max-width:1080px;margin:0 auto}
+  h1{font-family:"Poppins",-apple-system,sans-serif;font-weight:800;font-size:34px;letter-spacing:-.5px}
+  button,.gap{font-family:"Poppins",-apple-system,sans-serif}
+  .sub{color:var(--muted);margin:6px 0 22px;max-width:70ch}
+  .bar{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
+  button{font:inherit;font-weight:700;border:0;border-radius:10px;cursor:pointer;padding:12px 20px}
+  .make{background:var(--coral);color:#fff;font-size:16px}
+  .make:disabled{opacity:.5;cursor:default}
+  .note{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;border-radius:10px;
+        padding:10px 14px;font-size:13px;margin:14px 0 26px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;
+        display:flex;flex-direction:column}
+  .media{background:#0b0b0f;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;position:relative}
+  .media.v{aspect-ratio:9/16}
+  .media video,.media img{width:100%;height:100%;object-fit:contain;display:block}
+  .spin{color:#cbb8a3;font-size:13px;text-align:center;padding:20px}
+  .body{padding:12px 14px;display:flex;flex-direction:column;gap:8px;flex:1}
+  .gap{font-weight:700;font-size:14px}
+  .badges{display:flex;gap:6px;flex-wrap:wrap}
+  .b{font-size:11px;padding:2px 8px;border-radius:999px;background:#f2ece3;color:var(--muted)}
+  .approve{background:var(--green);color:#fff;margin-top:auto;width:100%}
+  .approve:hover{background:var(--green2)}
+  .approve:disabled{opacity:.55;cursor:default}
+  .err{color:#b91c1c;font-size:12px}
+  .ok{color:var(--green2);font-size:12px;white-space:pre-wrap;word-break:break-word}
+  .foot{color:var(--muted);font-size:12px;margin-top:30px}
+</style></head>
+<body><div class="wrap">
+  <h1>TPO Creative Studio</h1>
+  <p class="sub">Generate ad creatives from the analyzer's top gaps with real Pexels footage/photos,
+     then approve the ones you like — each Approve creates a <b>PAUSED</b> ad set + ad on Meta,
+     following the paid-ads launch playbook. Nothing spends until you finish the AI-off pass and go live in Ads Manager.</p>
+  <div class="bar">
+    <button class="make" id="make">✨ Make 5 ad creatives</button>
+    <span id="genstate" class="sub" style="margin:0"></span>
+  </div>
+  <div class="note">Every Approve ships <b>PAUSED</b> into an isolated <b>“AI Creative Test”</b> campaign
+    (US · 18+ · Advantage+ audience · Lead-optimized · 180-day sign-ups excluded · UTM tags on).
+    Do the Advantage+ creative <b>AI-off pass</b> in Ads Manager, then activate.</div>
+  <div class="grid" id="grid"></div>
+  <p class="foot">Local studio · localhost · reuses build_creative.py + pexels_fetch.py + meta_launch.py</p>
+</div>
+<script>
+const grid=document.getElementById('grid'), makeBtn=document.getElementById('make'), gs=document.getElementById('genstate');
+let items=[];
+
+function mediaEl(it){
+  if(it.status==='done'){
+    if(it.media==='motion') return `<div class="media v"><video src="${it.url}" controls muted loop playsinline></video></div>`;
+    return `<div class="media"><img src="${it.url}"></div>`;
+  }
+  if(it.status==='error') return `<div class="media${it.media==='motion'?' v':''}"><div class="spin err">⚠ ${it.error||'failed'}</div></div>`;
+  if(it.status==='generating') return `<div class="media${it.media==='motion'?' v':''}"><div class="spin">rendering… real footage + text</div></div>`;
+  return `<div class="media${it.media==='motion'?' v':''}"><div class="spin">queued</div></div>`;
+}
+function card(it){
+  const disabled = it.status!=='done' ? 'disabled' : '';
+  return `<div class="card" id="c_${it.id}">
+    ${mediaEl(it)}
+    <div class="body">
+      <div class="gap">${it.gap}</div>
+      <div class="badges"><span class="b">${it.media}</span><span class="b">${it.format}</span></div>
+      <button class="approve" data-id="${it.id}" ${disabled}>✅ Approve → launch PAUSED on Meta</button>
+      <div class="ok" id="ok_${it.id}"></div>
+    </div></div>`;
+}
+function render(){ grid.innerHTML = items.map(card).join(''); bind(); }
+function bind(){
+  document.querySelectorAll('.approve').forEach(b=>b.onclick=async()=>{
+    if(b.disabled) return;
+    const id=b.dataset.id, ok=document.getElementById('ok_'+id);
+    b.disabled=true; b.textContent='launching…'; ok.textContent='';
+    try{
+      const r=await (await fetch('/approve',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id})})).json();
+      if(r.ok){ b.textContent='✅ launched (PAUSED)';
+        ok.textContent=`campaign ${r.ids.campaign_id}\nad set ${r.ids.adset_id}\nad ${r.ids.ad_id}\n${r.ids.note}`; }
+      else{ b.disabled=false; b.textContent='✅ Approve → launch PAUSED on Meta';
+        ok.innerHTML=`<span class="err">${r.error}</span>`; }
+    }catch(e){ b.disabled=false; b.textContent='✅ Approve → launch PAUSED on Meta'; ok.innerHTML=`<span class="err">${e}</span>`; }
+  });
+}
+async function poll(){
+  const s=await (await fetch('/status')).json();
+  items=s.items; render();
+  const done=items.filter(i=>i.status==='done').length, err=items.filter(i=>i.status==='error').length;
+  if(s.generating){ gs.textContent=`rendering… ${done}/${items.length} done`; makeBtn.disabled=true; setTimeout(poll,2500); }
+  else{ makeBtn.disabled=false; gs.textContent = done||err ? `${done} ready${err?', '+err+' failed':''}` : ''; }
+}
+makeBtn.onclick=async()=>{
+  makeBtn.disabled=true; gs.textContent='starting…';
+  await fetch('/make',{method:'POST'}); setTimeout(poll,800);
+};
+poll();
+</script>
+</body></html>
