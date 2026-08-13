@@ -1,0 +1,7 @@
+# never commit plaintext secrets or worker scratch
+*.env
+.secrets/
+key.txt
+dashboard-pass.txt
+.vari-logs/
+__pycache__/
