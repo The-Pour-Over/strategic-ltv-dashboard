@@ -112,6 +112,20 @@
   }
   .btn.ink { background: #111110; color: #FFFFFF; }
 
+  .alt {
+    margin-top: 2.5rem;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+  .alt a {
+    color: var(--ink);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 2px;
+  }
+
   .err {
     display: none;
     margin-top: 1rem;
@@ -169,6 +183,7 @@
       <button class="btn" id="tpoBtn" type="submit">Try it</button>
     </form>
     <p class="err" id="err1">Hmm, that didn’t go through. Double-check the email and try again.</p>
+    <p class="alt">Already reading? <a href="https://apps.apple.com/us/app/the-pour-over/id6752842196" target="_blank" rel="noopener">Try our new app&nbsp;&rarr;</a></p>
   </div>
 
   <!-- STEP 2 — Decaf yes/no (coral band) -->
