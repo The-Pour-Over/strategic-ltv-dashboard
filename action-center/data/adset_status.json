@@ -1,6 +1,12 @@
 {
- "as_of": "2026-08-13",
+ "as_of": "2026-08-14",
  "active": {
+  "test_static_aug16_18-45": "ACTIVE",
+  "test_static_aug16_adv+": "ACTIVE",
+  "test_static_aug14_18-45": "ACTIVE",
+  "test_static_aug14_adv+": "ACTIVE",
+  "test_statics_aug13_18-45": "ACTIVE",
+  "test_statics_aug13_adv+": "ACTIVE",
   "test_mg_worldlouder_psych3_anxiety_18-45": "ACTIVE",
   "test_mg_worldlouder_psych3_anxiety_adv+": "ACTIVE",
   "test_mg_whenanxietyhits_psych3_anxiety_18-45": "ACTIVE",
