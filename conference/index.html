@@ -112,20 +112,6 @@
   }
   .btn.ink { background: #111110; color: #FFFFFF; }
 
-  .alt {
-    margin-top: 2.5rem;
-    font-size: 0.9rem;
-    color: var(--muted);
-  }
-  .alt a {
-    color: var(--ink);
-    font-weight: 600;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    text-decoration-color: var(--accent);
-    text-decoration-thickness: 2px;
-  }
-
   .err {
     display: none;
     margin-top: 1rem;
@@ -155,13 +141,23 @@
   footer {
     padding: 1.4rem clamp(1.25rem, 4vw, 3rem);
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.35rem 1.5rem;
     font-size: 0.72rem;
     font-weight: 600;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--muted);
     user-select: none;
+  }
+  footer a {
+    color: var(--accent);
+    font-weight: 700;
+    text-decoration: none;
+  }
+  @media (max-width: 560px) {
+    footer { justify-content: center; text-align: center; }
   }
   body.on-band { background: var(--accent); border-top-color: #111110; }
   body.on-band footer { opacity: 0; }
@@ -183,7 +179,6 @@
       <button class="btn" id="tpoBtn" type="submit">Try it</button>
     </form>
     <p class="err" id="err1">Hmm, that didn’t go through. Double-check the email and try again.</p>
-    <p class="alt">Already reading? <a href="https://apps.apple.com/us/app/the-pour-over/id6752842196" target="_blank" rel="noopener">Try our new app&nbsp;&rarr;</a></p>
   </div>
 
   <!-- STEP 2 — Decaf yes/no (coral band) -->
@@ -210,6 +205,7 @@
 
 <footer>
   <span>1,500,000 already reading</span>
+  <span>Already reading? <a href="https://apps.apple.com/us/app/the-pour-over/id6752842196" target="_blank" rel="noopener">Get the app&nbsp;&rarr;</a></span>
 </footer>
 
 <!-- Hidden native form: submits to beehiiv inside an invisible iframe, so the
