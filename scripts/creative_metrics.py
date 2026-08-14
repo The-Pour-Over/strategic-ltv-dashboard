@@ -36,7 +36,7 @@ def action(row, kind):
 params = {
     "level": "ad",
     "date_preset": "last_7d",
-    "fields": "ad_id,ad_name,adset_id,adset_name,impressions,clicks,inline_link_clicks,spend,ctr,actions,video_thruplay_watched_actions",
+    "fields": "ad_id,ad_name,adset_id,adset_name,impressions,clicks,inline_link_clicks,spend,ctr,frequency,actions,video_thruplay_watched_actions",
     "filtering": json.dumps([{"field": "spend", "operator": "GREATER_THAN", "value": 0}]),
     "limit": "200",
     "access_token": TOKEN,
@@ -70,6 +70,7 @@ for r in rows:
         "clicks": clicks,
         "ctr": round(clicks / imp * 100, 2),
         "meta_leads": leads,
+        "frequency": round(float(r.get("frequency", 0) or 0), 2) or None,
         "is_video": plays3s > 0,
         "hook_rate": round(plays3s / imp * 100, 1) if plays3s else None,
         "hold_rate": round(thruplays / plays3s * 100, 1) if plays3s else None,
@@ -170,7 +171,7 @@ hist.append({
     "date": today,
     "ads": {
         r["ad_id"]: {"spend": r["spend"], "ctr": r["ctr"], "hook_rate": r["hook_rate"],
-                     "hold_rate": r["hold_rate"], "meta_leads": r["meta_leads"]}
+                     "hold_rate": r["hold_rate"], "meta_leads": r["meta_leads"], "frequency": r["frequency"]}
         for r in out
     },
 })
