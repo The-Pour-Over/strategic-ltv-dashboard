@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-07-27",
+  "as_of": "2026-08-13",
   "account_id": "125820816056365",
   "retest_adset_id": "120249351231520224",
   "ltv_cohort": "7d",
@@ -7,26 +7,26 @@
     "adv+": {
       "adset_name": "qualified_broad_bestperformers_adv+",
       "adset_id": "120239853994820224",
-      "window": "2026-07-20..2026-07-26",
-      "spend_7d": 25152.13,
-      "meta_subs_7d": 5480,
-      "meta_cpa_7d": 4.59,
-      "beehiiv_cac_7d": 3.18,
-      "beehiiv_ltv_7d": 16.46,
-      "ltv_cac_7d": 5.18,
-      "beehiiv_subs_7d": 7910
+      "window": "2026-08-06..2026-08-12",
+      "spend_7d": 43308.97,
+      "meta_subs_7d": 7684,
+      "meta_cpa_7d": 5.64,
+      "beehiiv_cac_7d": 3.8,
+      "beehiiv_ltv_7d": 16.88,
+      "ltv_cac_7d": 4.44,
+      "beehiiv_subs_7d": 10193
     },
     "18-45": {
       "adset_name": "qualified_lead_best_performers_18-45",
       "adset_id": "120240614456640224",
-      "window": "2026-07-20..2026-07-26",
-      "spend_7d": 4679.28,
-      "meta_subs_7d": 609,
-      "meta_cpa_7d": 7.68,
-      "beehiiv_cac_7d": 5.3,
-      "beehiiv_ltv_7d": 16.46,
-      "ltv_cac_7d": 3.11,
-      "beehiiv_subs_7d": 882
+      "window": "2026-08-06..2026-08-12",
+      "spend_7d": 6867.02,
+      "meta_subs_7d": 811,
+      "meta_cpa_7d": 8.47,
+      "beehiiv_cac_7d": 6.08,
+      "beehiiv_ltv_7d": 16.85,
+      "ltv_cac_7d": 2.77,
+      "beehiiv_subs_7d": 1077
     }
   },
   "tests": [
@@ -58,13 +58,7 @@
         "beehiiv_ltv_cac_7d": 4.21,
         "beehiiv_subs_7d": 183,
         "ltv_match": "segment",
-        "promoted_copy": {
-          "adset_name": "qualified_broad_bestperformers_adv+",
-          "ltv": 27.94,
-          "ltv_cac": 8.17,
-          "subs_7d": 20,
-          "match": "exact"
-        }
+        "promoted_copy": null
       },
       "note": "Closest call of the batch: 16% over on true CPA, and the creative shows strong LTV where it runs in the winning set \u2014 Deny is defensible.",
       "qa": [
@@ -95,7 +89,7 @@
         "note": "white_static_istoppedstarting already promoted to the 18-45 winners"
       },
       "verdict": "fail",
-      "pct_over_benchmark": 29.6,
+      "pct_over_benchmark": 13.0,
       "verdict_basis": "true_cpa"
     },
     {
@@ -157,7 +151,7 @@
         "note": "theworldwenton \u2192 retest_in_future_18-45"
       },
       "verdict": "fail",
-      "pct_over_benchmark": 75.7,
+      "pct_over_benchmark": 53.1,
       "verdict_basis": "true_cpa"
     },
     {
@@ -219,7 +213,7 @@
         "note": "theworldwenton \u2192 retest_in_future_Adv+"
       },
       "verdict": "fail",
-      "pct_over_benchmark": 69.8,
+      "pct_over_benchmark": 42.1,
       "verdict_basis": "true_cpa"
     },
     {
@@ -284,7 +278,7 @@
         "note": "B1a \u2192 retest_in_future_Adv+"
       },
       "verdict": "fail",
-      "pct_over_benchmark": 73.6,
+      "pct_over_benchmark": 45.3,
       "verdict_basis": "true_cpa"
     },
     {
@@ -349,7 +343,7 @@
         "note": "B1a \u2192 retest_in_future_18-45"
       },
       "verdict": "fail",
-      "pct_over_benchmark": 57.9,
+      "pct_over_benchmark": 37.7,
       "verdict_basis": "true_cpa"
     },
     {
@@ -440,13 +434,7 @@
         "beehiiv_ltv_cac_7d": 9.53,
         "beehiiv_subs_7d": 116,
         "ltv_match": "segment",
-        "promoted_copy": {
-          "adset_name": "qualified_broad_bestperformers_adv+",
-          "ltv": 27.94,
-          "ltv_cac": 8.17,
-          "subs_7d": 20,
-          "match": "fuzzy"
-        }
+        "promoted_copy": null
       },
       "note": "Background-variations test of the promoted notesapp winner. Wildflower is Meta's clear pick (64 of 111 subs); rainy is runner-up at $6.83.",
       "qa": [
@@ -477,7 +465,7 @@
         "note": "wildflower \u2192 retest_in_future_Adv+ (parked copy 120249509784780224; original ad + test ad set paused \u2014 executed via Graph API after connector outage)"
       },
       "verdict": "fail",
-      "pct_over_benchmark": 39.9,
+      "pct_over_benchmark": 17.1,
       "verdict_basis": "true_cpa"
     },
     {
@@ -489,7 +477,7 @@
       "judgeable_from": null,
       "status": "paused_externally",
       "winner": null,
-      "note": "Scheduled for Jul 25 12:01am but found PAUSED with $0 spend on Jul 27 \u2014 someone paused it before launch. Needs Nicole: reschedule or leave off.",
+      "note": "never spent \u2014 uploaded paused and superseded by later batches.",
       "verdict": null
     },
     {
@@ -499,9 +487,163 @@
       "launched": "2026-07-23",
       "learning_exit": null,
       "judgeable_from": null,
+      "status": "paused_externally",
+      "winner": null,
+      "note": "$696 spent, ZERO qualified leads; shut off 07/28 without leaving learning. No winner to judge \u2014 the concept never converted.",
+      "verdict": null
+    },
+    {
+      "test": "test_video_whenyou_adv+",
+      "adset_id": "120249533227080224",
+      "audience": "adv+",
+      "launched": "2026-07-31",
+      "learning_exit": "2026-08-01",
+      "judgeable_from": "2026-08-03",
+      "status": "judgeable",
+      "winner": {
+        "ad_name": "ugc_whenyoucantwatch_psych7_suffocation",
+        "ad_id": "120249533238400224",
+        "creative_id": "1759637408510798",
+        "spend": 1003.0,
+        "meta_cpa": 6.92,
+        "meta_subs": 145,
+        "beehiiv_subs_lifetime": null,
+        "beehiiv_segment": null,
+        "is_video": true,
+        "hook_rate": 73.5,
+        "hold_rate": 6.6,
+        "true_cpa": null,
+        "beehiiv_ltv_7d": 8.67,
+        "beehiiv_ltv_cac_7d": 1.16,
+        "beehiiv_subs_7d": null,
+        "ltv_match": "exact",
+        "promoted_copy": {
+          "adset_name": "test_video_whenyou_18-45",
+          "ltv": 8.67,
+          "ltv_cac": 1.16,
+          "subs_7d": 10,
+          "match": "exact"
+        }
+      },
+      "note": "Ran 07/31\u201308/07 and was shut off WITHOUT a verdict \u2014 this card records the missed judgment. Ad set total: $1478 / 219 leads. No beehiiv truecpa segment exists for this winner, so the verdict uses Meta CPA vs the winning ad set's Meta CPA (same event both sides).",
+      "qa": [
+        [
+          "Why judge it now if it's already off?",
+          "So the outcome is recorded and the winner lands in the retest pool instead of vanishing. \u2717 park copies it PAUSED into retest_in_future; \u2713 would promote it live despite missing benchmark."
+        ],
+        [
+          "What does hook/hold say?",
+          "Hook 73.5% is far above the ~25\u201335% norm \u2014 the 'whenyoucantwatch' opener stops the scroll. Hold 6.6% means viewers bail right after \u2014 the payoff, not the hook, is what failed."
+        ]
+      ],
+      "resolution": {
+        "action": "parked",
+        "date": "2026-08-13",
+        "note": "executed live from the dashboard \u2014 paused copy in the audience-matched retest_in_future set; Aug-11 manual duplicates renamed zz_delete_* and paused"
+      },
+      "verdict": "fail",
+      "pct_over_benchmark": 22.7,
+      "verdict_basis": "meta_cpa"
+    },
+    {
+      "test": "test_video_whenyou_18-45",
+      "adset_id": "120249533227610224",
+      "audience": "18-45",
+      "launched": "2026-07-31",
+      "learning_exit": "2026-08-03",
+      "judgeable_from": "2026-08-05",
+      "status": "judgeable",
+      "winner": {
+        "ad_name": "augc_whenyoucantwatch_psych7_suffocation",
+        "ad_id": "120249533242710224",
+        "creative_id": "2264700417618580",
+        "spend": 641.11,
+        "meta_cpa": 18.32,
+        "meta_subs": 35,
+        "beehiiv_subs_lifetime": null,
+        "beehiiv_segment": null,
+        "is_video": true,
+        "hook_rate": 44.8,
+        "hold_rate": 3.9,
+        "true_cpa": null,
+        "beehiiv_ltv_7d": 11.87,
+        "beehiiv_ltv_cac_7d": 0.83,
+        "beehiiv_subs_7d": null,
+        "ltv_match": "exact",
+        "promoted_copy": {
+          "adset_name": "test_video_whenyou_18-45",
+          "ltv": 11.87,
+          "ltv_cac": 0.83,
+          "subs_7d": 22,
+          "match": "exact"
+        }
+      },
+      "note": "Ran 07/31\u201308/07 and was shut off WITHOUT a verdict \u2014 this card records the missed judgment. Ad set total: $1437 / 97 leads. No beehiiv truecpa segment exists for this winner, so the verdict uses Meta CPA vs the winning ad set's Meta CPA (same event both sides).",
+      "qa": [
+        [
+          "Why judge it now if it's already off?",
+          "So the outcome is recorded and the winner lands in the retest pool instead of vanishing. \u2717 park copies it PAUSED into retest_in_future; \u2713 would promote it live despite missing benchmark."
+        ],
+        [
+          "What does hook/hold say?",
+          "Hook 44.8% is far above the ~25\u201335% norm \u2014 the 'whenyoucantwatch' opener stops the scroll. Hold 3.9% means viewers bail right after \u2014 the payoff, not the hook, is what failed."
+        ]
+      ],
+      "resolution": {
+        "action": "parked",
+        "date": "2026-08-13",
+        "note": "executed live from the dashboard \u2014 paused copy in the audience-matched retest_in_future set; Aug-11 manual duplicates renamed zz_delete_* and paused"
+      },
+      "verdict": "fail",
+      "pct_over_benchmark": 116.3,
+      "verdict_basis": "meta_cpa"
+    },
+    {
+      "test": "test_mg_whenanxietyhits_psych3_anxiety_adv+",
+      "adset_id": "120249826498980224",
+      "audience": "adv+",
+      "launched": "2026-08-12",
+      "learning_exit": null,
+      "judgeable_from": null,
       "status": "learning",
       "winner": null,
-      "note": "Optimizes to Website subscriptions (not the qualified-lead event) \u2014 outside the verdict system; ~$680 spent so far.",
+      "note": "launched 08/12 \u00b7 30/50 leads so far ($328 spent)",
+      "verdict": null
+    },
+    {
+      "test": "test_mg_whenanxietyhits_psych3_anxiety_18-45",
+      "adset_id": "120249826499700224",
+      "audience": "18-45",
+      "launched": "2026-08-12",
+      "learning_exit": null,
+      "judgeable_from": null,
+      "status": "learning",
+      "winner": null,
+      "note": "launched 08/12 \u00b7 13/50 leads so far ($299 spent)",
+      "verdict": null
+    },
+    {
+      "test": "test_mg_worldlouder_psych3_anxiety_adv+",
+      "adset_id": "120249827152010224",
+      "audience": "adv+",
+      "launched": "2026-08-13",
+      "learning_exit": null,
+      "judgeable_from": null,
+      "status": "learning",
+      "winner": null,
+      "note": "launched 08/13 \u00b7 13/50 leads so far ($126 spent)",
+      "verdict": null
+    },
+    {
+      "test": "test_mg_worldlouder_psych3_anxiety_18-45",
+      "adset_id": "120249827152730224",
+      "audience": "18-45",
+      "launched": "2026-08-13",
+      "learning_exit": null,
+      "judgeable_from": null,
+      "status": "learning",
+      "winner": null,
+      "note": "launched 08/13 \u00b7 7/50 leads so far ($107 spent)",
       "verdict": null
     }
   ],
@@ -530,7 +672,14 @@
       "examples": [
         "static_theworldwenton_psych3_anxiety (+70\u201376% vs bench in both audiences)"
       ]
+    },
+    {
+      "lesson": "A monster hook can't rescue a weak payoff \u2014 the 'when you can('t)\u2026' UGC videos hooked 45\u201374% of viewers (vs ~25\u201335% norm) but held under 7%, and both audiences missed benchmark. Reuse the OPENER on creative whose first 5 seconds deliver the felt-need promise.",
+      "examples": [
+        "ugc_whenyoucantwatch_psych7_suffocation ($6.92 vs $5.64 bench, hook 74%/hold 7%)",
+        "augc_whenyoucantwatch_psych7_suffocation ($18.32 vs $8.47, 18-45)"
+      ]
     }
   ],
-  "flagged_count": 6
+  "flagged_count": 8
 }
