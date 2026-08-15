@@ -1,0 +1,23 @@
+{
+  "media": "motion",
+  "format": "9:16",
+  "font_style": "boldsans",
+  "scrim": "dark",
+  "background": {
+    "type": "video",
+    "path": "action-center/data/bg_wheat.mp4",
+    "start": 1
+  },
+  "hook_instant": true,
+  "duration": 10,
+  "fps": 15,
+  "stanzas": [
+    "The news made me angry every morning.",
+    "Then I found The Pour Over.",
+    "Same news. Biblical perspective. 5 minutes. Free.",
+    "1,500,000 Christians read it daily.",
+    "Now I do too."
+  ],
+  "music": { "path": "creative-studio/music/peaceful_003.mp3", "gain_db": -6 },
+  "out": "action-center/data/built_mg_wheat_thenewsmademeangry_psych17_resentment.mp4"
+}

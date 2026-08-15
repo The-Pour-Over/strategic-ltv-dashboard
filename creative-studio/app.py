@@ -10,7 +10,7 @@
 Run:  python3.12 creative-studio/app.py   ->  http://localhost:8765
 Zero dependencies (stdlib only). Generation runs in a background thread.
 """
-import json, os, sys, threading, subprocess, urllib.parse
+import json, os, sys, threading, subprocess, urllib.parse, base64, hmac
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -97,9 +97,66 @@ def approve(bid):
     except Exception as e:
         return {"ok": False, "error": str(e)}
 
+"""Basic auth. Required because /approve creates REAL ad sets + ads on the live Meta
+account -- the moment this server is reachable off localhost (cloudflared tunnel, LAN),
+an unauthenticated /approve is an open door to spending money. Credentials come from
+STUDIO_USER / STUDIO_PASS. If STUDIO_PASS is unset the server refuses to bind to
+anything except 127.0.0.1, so the local-only workflow keeps working with no password."""
+ALLOWED_ORIGINS = {
+    "https://meta-ltv-dashboard.pages.dev",  # the live dashboard (Cloudflare Pages)
+    "http://localhost:3000",                 # pnpm dev
+    "http://localhost:8765",                 # the studio's own bundled index.html
+    "http://127.0.0.1:8765",
+}
+STUDIO_USER = os.environ.get("STUDIO_USER", "tpo")
+STUDIO_PASS = os.environ.get("STUDIO_PASS", "")
+_EXPECTED = "Basic " + base64.b64encode(f"{STUDIO_USER}:{STUDIO_PASS}".encode()).decode()
+
+
 class H(BaseHTTPRequestHandler):
     def log_message(self, *a):  # quiet
         pass
+
+    def _authed(self):
+        """True when auth is disabled (local-only) or the header matches exactly."""
+        if not STUDIO_PASS:
+            return True
+        got = self.headers.get("Authorization", "")
+        # compare_digest: constant-time, so a wrong password can't be recovered by timing
+        return hmac.compare_digest(got, _EXPECTED)
+
+    def _challenge(self):
+        body = b'{"error":"auth required"}'
+        self.send_response(401)
+        self._cors()
+        # No WWW-Authenticate header: it makes the browser throw its own native login
+        # box over the dashboard page. The React page collects the password itself and
+        # sends the Authorization header, so the challenge stays a plain 401.
+        if not self.headers.get("Origin"):
+            self.send_header("WWW-Authenticate", 'Basic realm="TPO Creative Studio"')
+        self.send_header("Content-Type", "application/json")
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
+
+    def _cors(self):
+        """The UI is served from the dashboard's Cloudflare Pages origin while this
+        server runs on the laptop, so every real request is cross-origin. Allow-list the
+        dashboard origins rather than '*': with '*' any page on the internet could drive
+        /approve using a password the browser had already cached."""
+        origin = self.headers.get("Origin", "")
+        if origin in ALLOWED_ORIGINS or origin.endswith(".meta-ltv-dashboard.pages.dev"):
+            self.send_header("Access-Control-Allow-Origin", origin)
+            self.send_header("Vary", "Origin")
+            self.send_header("Access-Control-Allow-Credentials", "true")
+            self.send_header("Access-Control-Allow-Headers", "Authorization, Content-Type")
+            self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+
+    def do_OPTIONS(self):
+        self.send_response(204)
+        self._cors()
+        self.send_header("Content-Length", "0")
+        self.end_headers()
 
     def _send(self, code, body, ctype="application/json"):
         if isinstance(body, (dict, list)):
@@ -107,12 +164,15 @@ class H(BaseHTTPRequestHandler):
         elif isinstance(body, str):
             body = body.encode()
         self.send_response(code)
+        self._cors()
         self.send_header("Content-Type", ctype)
         self.send_header("Content-Length", str(len(body)))
         self.end_headers()
         self.wfile.write(body)
 
     def do_GET(self):
+        if not self._authed():
+            return self._challenge()
         p = urllib.parse.urlparse(self.path).path
         if p == "/" or p == "/index.html":
             return self._send(200, open(os.path.join(HERE, "index.html")).read(), "text/html")
@@ -159,6 +219,8 @@ class H(BaseHTTPRequestHandler):
         return self._send(404, {"error": "not found"})
 
     def do_POST(self):
+        if not self._authed():
+            return self._challenge()
         p = urllib.parse.urlparse(self.path).path
         n = int(self.headers.get("Content-Length", 0))
         body = json.loads(self.rfile.read(n) or b"{}") if n else {}
@@ -173,5 +235,11 @@ class H(BaseHTTPRequestHandler):
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", "8765"))
-    print(f"Creative Studio -> http://localhost:{port}")
-    ThreadingHTTPServer(("127.0.0.1", port), H).serve_forever()
+    # Bind loopback-only unless a password is set. A tunnel (cloudflared) still reaches
+    # 127.0.0.1 fine, so the safe default costs nothing; binding 0.0.0.0 without a
+    # password would put /approve on the LAN unauthenticated.
+    host = os.environ.get("STUDIO_HOST", "127.0.0.1")
+    if host != "127.0.0.1" and not STUDIO_PASS:
+        raise SystemExit("refusing to bind %s without STUDIO_PASS set" % host)
+    print(f"Creative Studio -> http://localhost:{port}  (auth: {'ON' if STUDIO_PASS else 'off, local only'})")
+    ThreadingHTTPServer((host, port), H).serve_forever()
