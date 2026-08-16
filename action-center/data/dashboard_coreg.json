@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-08-15T11:06:30.865862Z",
-  "end_date": "2026-08-14",
+  "generated_at": "2026-08-16T12:20:57.621598Z",
+  "end_date": "2026-08-15",
   "note": "Each co-reg opt-in joins BOTH Decaf and News Health (one click). Denominator = thx_page_cosignup primary subs. conversion_rate = co-reg opt-ins / primary subs. effective_cpa credits the variant for the cross-sell.",
-  "total_since_launch": 30,
+  "total_since_launch": 24,
   "launch": "2026-07-09",
   "cohorts": {
     "3d": {
