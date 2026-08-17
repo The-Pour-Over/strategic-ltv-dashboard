@@ -6654,7 +6654,7 @@
   "date": "2026-08-17",
   "ads": {
    "120247806079290224": {
-    "spend": 12620.9,
+    "spend": 12620.98,
     "ctr": 1.69,
     "hook_rate": 58.1,
     "hold_rate": 63.4,
@@ -6662,7 +6662,7 @@
     "frequency": 1.21
    },
    "120246221213490224": {
-    "spend": 9652.03,
+    "spend": 9652.13,
     "ctr": 1.83,
     "hook_rate": 50.5,
     "hold_rate": 46.1,
@@ -6670,7 +6670,7 @@
     "frequency": 1.22
    },
    "120247148835040224": {
-    "spend": 7970.31,
+    "spend": 7970.59,
     "ctr": 1.13,
     "hook_rate": 28.7,
     "hold_rate": 17.1,
@@ -6678,7 +6678,7 @@
     "frequency": 1.77
    },
    "120247087319260224": {
-    "spend": 5504.51,
+    "spend": 5504.88,
     "ctr": 2.29,
     "hook_rate": null,
     "hold_rate": null,
@@ -6686,7 +6686,7 @@
     "frequency": 1.16
    },
    "120242044318830224": {
-    "spend": 5485.85,
+    "spend": 5485.86,
     "ctr": 1.94,
     "hook_rate": 42.4,
     "hold_rate": 18.2,
@@ -6694,7 +6694,7 @@
     "frequency": 1.17
    },
    "120239853995070224": {
-    "spend": 5097.44,
+    "spend": 5097.55,
     "ctr": 1.26,
     "hook_rate": null,
     "hold_rate": null,
@@ -6702,7 +6702,7 @@
     "frequency": 1.31
    },
    "120249278900610224": {
-    "spend": 4793.54,
+    "spend": 4793.55,
     "ctr": 1.95,
     "hook_rate": 54.8,
     "hold_rate": 17.6,
@@ -6710,7 +6710,7 @@
     "frequency": 1.4
    },
    "120248974675030224": {
-    "spend": 4729.72,
+    "spend": 4729.81,
     "ctr": 1.5,
     "hook_rate": null,
     "hold_rate": null,
@@ -6750,7 +6750,7 @@
     "frequency": 1.15
    },
    "120248456064930224": {
-    "spend": 3101.31,
+    "spend": 3101.32,
     "ctr": 2.9,
     "hook_rate": 71.8,
     "hold_rate": 21.5,
@@ -6758,7 +6758,7 @@
     "frequency": 1.16
    },
    "120240614440580224": {
-    "spend": 2509.04,
+    "spend": 2509.05,
     "ctr": 3.11,
     "hook_rate": 60.2,
     "hold_rate": 25.2,
@@ -6766,7 +6766,7 @@
     "frequency": 1.11
    },
    "120249279236990224": {
-    "spend": 2243.64,
+    "spend": 2243.65,
     "ctr": 2.26,
     "hook_rate": 45.8,
     "hold_rate": 15.3,
@@ -6782,7 +6782,7 @@
     "frequency": 1.13
    },
    "120243459091930224": {
-    "spend": 1889.38,
+    "spend": 1889.41,
     "ctr": 3.24,
     "hook_rate": 58.3,
     "hold_rate": 28.0,
@@ -6790,7 +6790,7 @@
     "frequency": 1.11
    },
    "120249106185560224": {
-    "spend": 1772.22,
+    "spend": 1772.37,
     "ctr": 0.9,
     "hook_rate": null,
     "hold_rate": null,
@@ -6798,7 +6798,7 @@
     "frequency": 1.42
    },
    "120249618752210224": {
-    "spend": 1752.0,
+    "spend": 1752.04,
     "ctr": 1.52,
     "hook_rate": null,
     "hold_rate": null,
@@ -6806,7 +6806,7 @@
     "frequency": 1.52
    },
    "120249104389310224": {
-    "spend": 1565.7,
+    "spend": 1565.73,
     "ctr": 1.25,
     "hook_rate": null,
     "hold_rate": null,
@@ -6814,7 +6814,7 @@
     "frequency": 1.32
    },
    "120246798460790224": {
-    "spend": 1486.65,
+    "spend": 1486.74,
     "ctr": 1.96,
     "hook_rate": 53.5,
     "hold_rate": 47.8,
@@ -6822,7 +6822,7 @@
     "frequency": 1.1
    },
    "120249638871040224": {
-    "spend": 1484.07,
+    "spend": 1484.16,
     "ctr": 1.53,
     "hook_rate": null,
     "hold_rate": null,
@@ -6838,7 +6838,7 @@
     "frequency": 1.09
    },
    "120246470081500224": {
-    "spend": 1427.95,
+    "spend": 1427.96,
     "ctr": 0.73,
     "hook_rate": 33.3,
     "hold_rate": 63.1,
@@ -6846,7 +6846,7 @@
     "frequency": 1.11
    },
    "120249278900570224": {
-    "spend": 1382.92,
+    "spend": 1382.94,
     "ctr": 1.93,
     "hook_rate": null,
     "hold_rate": null,
@@ -6854,7 +6854,7 @@
     "frequency": 1.12
    },
    "120249279237020224": {
-    "spend": 1341.86,
+    "spend": 1341.91,
     "ctr": 1.55,
     "hook_rate": 46.0,
     "hold_rate": 67.5,
@@ -6862,7 +6862,7 @@
     "frequency": 1.15
    },
    "120239853995060224": {
-    "spend": 1173.29,
+    "spend": 1173.36,
     "ctr": 1.2,
     "hook_rate": null,
     "hold_rate": null,
@@ -6886,7 +6886,7 @@
     "frequency": 1.04
    },
    "120244585370960224": {
-    "spend": 788.53,
+    "spend": 788.54,
     "ctr": 1.23,
     "hook_rate": 46.3,
     "hold_rate": 11.9,
@@ -6918,7 +6918,7 @@
     "frequency": 1.13
    },
    "120248899115130224": {
-    "spend": 654.03,
+    "spend": 654.04,
     "ctr": 1.74,
     "hook_rate": 71.5,
     "hold_rate": 13.0,
@@ -6926,7 +6926,7 @@
     "frequency": 1.06
    },
    "120242044411110224": {
-    "spend": 639.02,
+    "spend": 639.03,
     "ctr": 1.45,
     "hook_rate": null,
     "hold_rate": null,
@@ -6934,7 +6934,7 @@
     "frequency": 1.1
    },
    "120249278900770224": {
-    "spend": 527.34,
+    "spend": 527.36,
     "ctr": 1.74,
     "hook_rate": 48.7,
     "hold_rate": 46.0,
@@ -6950,7 +6950,7 @@
     "frequency": 1.13
    },
    "120242044353980224": {
-    "spend": 516.29,
+    "spend": 516.3,
     "ctr": 1.35,
     "hook_rate": null,
     "hold_rate": null,
@@ -6982,7 +6982,7 @@
     "frequency": 1.05
    },
    "120249706936610224": {
-    "spend": 361.36,
+    "spend": 361.37,
     "ctr": 1.4,
     "hook_rate": null,
     "hold_rate": null,
@@ -7030,7 +7030,7 @@
     "frequency": 1.09
    },
    "120249887651010224": {
-    "spend": 283.41,
+    "spend": 283.45,
     "ctr": 0.76,
     "hook_rate": null,
     "hold_rate": null,
@@ -7062,7 +7062,7 @@
     "frequency": 1.08
    },
    "120249890739840224": {
-    "spend": 244.28,
+    "spend": 244.3,
     "ctr": 1.18,
     "hook_rate": null,
     "hold_rate": null,
@@ -7070,7 +7070,7 @@
     "frequency": 1.1
    },
    "120249887651480224": {
-    "spend": 242.57,
+    "spend": 242.6,
     "ctr": 0.52,
     "hook_rate": null,
     "hold_rate": null,
@@ -7118,7 +7118,7 @@
     "frequency": 1.17
    },
    "120245704063490224": {
-    "spend": 212.29,
+    "spend": 212.3,
     "ctr": 1.08,
     "hook_rate": null,
     "hold_rate": null,
@@ -7166,9 +7166,9 @@
     "frequency": 1.06
    },
    "120249706968070224": {
-    "spend": 169.22,
+    "spend": 169.23,
     "ctr": 1.47,
-    "hook_rate": 55.3,
+    "hook_rate": 55.4,
     "hold_rate": 59.5,
     "meta_leads": 38,
     "frequency": 1.07
@@ -7190,7 +7190,7 @@
     "frequency": 1.1
    },
    "120249706935240224": {
-    "spend": 162.44,
+    "spend": 162.5,
     "ctr": 1.73,
     "hook_rate": 68.6,
     "hold_rate": 16.2,
@@ -7238,7 +7238,7 @@
     "frequency": 1.1
    },
    "120249890740340224": {
-    "spend": 142.6,
+    "spend": 142.61,
     "ctr": 2.53,
     "hook_rate": 50.2,
     "hold_rate": 25.6,
@@ -7302,7 +7302,7 @@
     "frequency": 1.12
    },
    "120246594229520224": {
-    "spend": 103.01,
+    "spend": 103.04,
     "ctr": 1.74,
     "hook_rate": null,
     "hold_rate": null,
@@ -7374,7 +7374,7 @@
     "frequency": 1.08
    },
    "120249888526630224": {
-    "spend": 76.64,
+    "spend": 76.65,
     "ctr": 1.43,
     "hook_rate": null,
     "hold_rate": null,
@@ -7430,7 +7430,7 @@
     "frequency": 1.1
    },
    "120249888528190224": {
-    "spend": 64.0,
+    "spend": 64.02,
     "ctr": 0.9,
     "hook_rate": null,
     "hold_rate": null,
@@ -7446,7 +7446,7 @@
     "frequency": 1.07
    },
    "120249706934500224": {
-    "spend": 60.99,
+    "spend": 61.02,
     "ctr": 1.26,
     "hook_rate": null,
     "hold_rate": null,
@@ -7470,7 +7470,7 @@
     "frequency": 1.19
    },
    "120249826622340224": {
-    "spend": 51.95,
+    "spend": 51.98,
     "ctr": 2.5,
     "hook_rate": 54.7,
     "hold_rate": 24.9,
@@ -7502,9 +7502,9 @@
     "frequency": 1.01
    },
    "120249706966820224": {
-    "spend": 44.03,
+    "spend": 44.06,
     "ctr": 2.83,
-    "hook_rate": 69.1,
+    "hook_rate": 69.0,
     "hold_rate": 19.5,
     "meta_leads": 6,
     "frequency": 1.05
@@ -7598,7 +7598,7 @@
     "frequency": 1.08
    },
    "120249888527440224": {
-    "spend": 30.45,
+    "spend": 30.5,
     "ctr": 1.24,
     "hook_rate": null,
     "hold_rate": null,
@@ -7654,7 +7654,7 @@
     "frequency": 1.12
    },
    "120249887650790224": {
-    "spend": 24.49,
+    "spend": 24.51,
     "ctr": 0.56,
     "hook_rate": null,
     "hold_rate": null,
@@ -7725,6 +7725,14 @@
     "meta_leads": 3,
     "frequency": 1.05
    },
+   "120249706936290224": {
+    "spend": 16.92,
+    "ctr": 3.57,
+    "hook_rate": 55.3,
+    "hold_rate": 26.6,
+    "meta_leads": 3,
+    "frequency": 1.01
+   },
    "120249887641020224": {
     "spend": 16.92,
     "ctr": 0.97,
@@ -7732,14 +7740,6 @@
     "hold_rate": null,
     "meta_leads": 2,
     "frequency": 1.1
-   },
-   "120249706936290224": {
-    "spend": 16.91,
-    "ctr": 3.57,
-    "hook_rate": 55.4,
-    "hold_rate": 26.6,
-    "meta_leads": 3,
-    "frequency": 1.01
    },
    "120249888527290224": {
     "spend": 16.69,
@@ -7926,7 +7926,7 @@
     "frequency": 1.09
    },
    "120249827217520224": {
-    "spend": 8.67,
+    "spend": 8.68,
     "ctr": 0.63,
     "hook_rate": 10.0,
     "hold_rate": 40.2,
